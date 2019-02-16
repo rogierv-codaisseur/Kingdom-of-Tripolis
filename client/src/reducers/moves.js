@@ -4,9 +4,10 @@ const moves = (state = [], action) => {
     case 'RECEIVE_MOVE':
       return state.concat([
         {
-          direction: action.direction,
+          action: action.action,
           player: action.player,
-          id: action.id
+          id: action.id,
+          time: action.time
         }
       ]);
     default:

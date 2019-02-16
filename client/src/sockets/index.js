@@ -5,14 +5,15 @@ const setupSocket = dispatch => {
 
   const socket = new WebSocket('ws://localhost:4000');
 
-  socket.onopen = () =>
-    socket.send(JSON.stringify({ message: 'Socket opened' }));
+  // Send a message if the connection through sockets it open.
+  // socket.onopen = () =>
+  //   socket.send(JSON.stringify({ message: 'Socket opened' }));
 
   socket.onmessage = event => {
     const data = JSON.parse(event.data);
     switch (data.type) {
       case SEND_MOVE:
-        dispatch(receiveMove(data.direction, data.player));
+        dispatch(receiveMove(data.action, data.player));
         break;
       default:
         break;

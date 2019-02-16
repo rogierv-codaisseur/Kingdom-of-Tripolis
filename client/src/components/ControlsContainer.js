@@ -3,8 +3,8 @@ import ControlsComponent from './Controls';
 import { sendMove } from '../actions';
 
 const mapDispatchToProps = dispatch => ({
-  dispatch: (direction, player) => {
-    dispatch(sendMove(direction, player));
+  dispatch: (action, player) => {
+    dispatch(sendMove(action, player));
   }
 });
 
