@@ -1,25 +1,74 @@
-const express = require('express');
-const http = require('http');
-const socketIO = require('socket.io');
+const WebSocket = require('ws');
 
-const port = 4000;
-const app = express();
-const server = http.createServer(app);
-const io = socketIO(server);
+const wss = new WebSocket.Server({ port: 4000 });
 
-app.get('/', (req, res) => console.log('test'));
+const users = [];
 
-io.on('connection', socket => {
-  console.log('New client connected', socket.id);
+const broadcast = (data, ws) => {
+  wss.clients.forEach(client => {
+    if (client.readyState === WebSocket.OPEN && client !== ws) {
+      client.send(JSON.stringify(data));
+    }
+  });
+};
 
-  socket.on('move', _ => {
-    console.log('Server: move received from', socket.id);
-    io.sockets.emit('move');
+wss.on('connection', ws => {
+  let index;
+  ws.on('message', message => {
+    const data = JSON.parse(message);
+    console.log(message);
+    switch (data.type) {
+      case 'ADD_USER': {
+        index = users.length;
+        users.push({ name: data.name, id: index + 1 });
+        ws.send(
+          JSON.stringify({
+            type: 'USERS_LIST',
+            users
+          })
+        );
+        broadcast(
+          {
+            type: 'USERS_LIST',
+            users
+          },
+          ws
+        );
+        break;
+      }
+      case 'ADD_MESSAGE':
+        broadcast(
+          {
+            type: 'ADD_MESSAGE',
+            message: data.message,
+            author: data.author
+          },
+          ws
+        );
+        break;
+      case 'SEND_MOVE':
+        broadcast(
+          {
+            type: 'SEND_MOVE',
+            direction: data.direction,
+            player: data.player
+          },
+          ws
+        );
+        break;
+      default:
+        break;
+    }
   });
 
-  socket.on('disconnect', () => {
-    console.log('Client disconnected', socket.id);
+  ws.on('close', () => {
+    users.splice(index, 1);
+    broadcast(
+      {
+        type: 'USERS_LIST',
+        users
+      },
+      ws
+    );
   });
 });
-
-server.listen(port, () => console.log(`Listening on ${port}`));

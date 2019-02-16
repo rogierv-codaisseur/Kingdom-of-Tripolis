@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
+import moves from './moves';
 
 export default combineReducers({
-  // New reducers will be added here.
+  moves
 });
