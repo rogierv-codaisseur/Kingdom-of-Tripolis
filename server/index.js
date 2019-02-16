@@ -36,21 +36,11 @@ wss.on('connection', ws => {
         );
         break;
       }
-      case 'ADD_MESSAGE':
-        broadcast(
-          {
-            type: 'ADD_MESSAGE',
-            message: data.message,
-            author: data.author
-          },
-          ws
-        );
-        break;
       case 'SEND_MOVE':
         broadcast(
           {
             type: 'SEND_MOVE',
-            direction: data.direction,
+            action: data.action,
             player: data.player
           },
           ws
