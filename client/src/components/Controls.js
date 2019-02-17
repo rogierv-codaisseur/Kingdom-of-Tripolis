@@ -3,6 +3,10 @@ import React from 'react';
 const Controls = props => {
   const { dispatch } = props;
 
+  window.addEventListener('keydown', e => {
+    handleKeyDown(e);
+  });
+
   const handleKeyDown = e => {
     e.preventDefault();
 
@@ -16,15 +20,11 @@ const Controls = props => {
       case 39:
         return dispatch('Right', 'Me');
       case 40:
-        return dispatch('Left', 'Me');
+        return dispatch('Down', 'Me');
       default:
-        console.log(e.keyCode);
+        break;
     }
   };
-
-  window.addEventListener('keydown', e => {
-    handleKeyDown(e);
-  });
 
   return (
     <div>
