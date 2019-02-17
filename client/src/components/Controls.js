@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Controls = props => {
   const { dispatch } = props;
@@ -38,3 +39,7 @@ const Controls = props => {
 };
 
 export default Controls;
+
+Controls.propTypes = {
+  dispatch: PropTypes.func.isRequired
+};
