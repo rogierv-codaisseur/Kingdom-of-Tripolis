@@ -27,13 +27,27 @@ const Controls = props => {
     }
   };
 
+  const handleButton = e => {
+    return dispatch(e, 'Me');
+  };
+
   return (
     <div>
-      <button onClick={() => dispatch('Left', 'Me')}>Left</button>
-      <button onClick={() => dispatch('Up', 'Me')}>Up</button>
-      <button onClick={() => dispatch('Right', 'Me')}>Right</button>
-      <button onClick={() => dispatch('Down', 'Me')}>Down</button>
-      <button onClick={() => dispatch('Shoot', 'Me')}>Shoot (Space)</button>
+      <button type='button' onClick={() => handleButton('Shoot')}>
+        Shoot
+      </button>
+      <button type='button' onClick={() => handleButton('Left')}>
+        Left
+      </button>
+      <button type='button' onClick={() => handleButton('Up')}>
+        Up
+      </button>
+      <button type='button' onClick={() => handleButton('Right')}>
+        Right
+      </button>
+      <button type='button' onClick={() => handleButton('Down')}>
+        Down
+      </button>
     </div>
   );
 };

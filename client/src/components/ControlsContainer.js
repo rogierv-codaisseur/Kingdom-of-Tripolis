@@ -8,7 +8,7 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-export const Controls = connect(
-  () => ({}),
+export default connect(
+  null,
   mapDispatchToProps
 )(ControlsComponent);
