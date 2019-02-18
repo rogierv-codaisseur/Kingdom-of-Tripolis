@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.css';
-import Controls from './components/ControlsContainer';
+import ControlsContainer from './components/controls/ControlsContainer';
+import World from './components/world/World';
 
 const App = () => (
   <div>
-    <Controls />
+    <ControlsContainer />
+    <World />
   </div>
 );
 
