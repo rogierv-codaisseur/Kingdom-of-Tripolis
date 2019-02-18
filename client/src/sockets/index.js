@@ -15,20 +15,13 @@ const setupSocket = (dispatch, player) => {
 
   socket.onmessage = event => {
     const data = JSON.parse(event.data);
-    switch (data.type) {
+    const { action, player, players, position, spriteLocation, type, walkIndex } = data;
+    switch (type) {
       case SEND_MOVE:
-        dispatch(
-          receiveMove(
-            data.action,
-            data.player,
-            data.position,
-            data.walkIndex,
-            data.spriteLocation
-          )
-        );
+        dispatch(receiveMove(action, player, position, walkIndex, spriteLocation));
         break;
       case PLAYERS_LIST:
-        dispatch(populatePlayersList(data.players));
+        dispatch(populatePlayersList(players));
         break;
       default:
         break;

@@ -1,6 +1,5 @@
 import { takeEvery } from 'redux-saga/effects';
-
-const SEND_MOVE = 'SEND_MOVE';
+import { SEND_MOVE } from '../constants/actionTypes';
 
 const handleNewMessage = function* handleNewMessage(params) {
   yield takeEvery(SEND_MOVE, action => {

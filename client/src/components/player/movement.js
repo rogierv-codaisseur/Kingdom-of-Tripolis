@@ -1,9 +1,5 @@
 import store from '../../store';
-import {
-  SPRITE_SIZE,
-  MAP_HEIGHT,
-  MAP_WIDTH
-} from '../../constants/gameConstants';
+import { SPRITE_SIZE, MAP_HEIGHT, MAP_WIDTH } from '../../constants/gameConstants';
 
 export default function handleMovement(player) {
   function getNewPosition(oldPos, direction) {
@@ -72,7 +68,6 @@ export default function handleMovement(player) {
     store.dispatch({
       type: 'SEND_MOVE',
       action: direction,
-      player: 'Me',
       position: newPos,
       walkIndex,
       spriteLocation: getSpriteLocation(direction, walkIndex)
@@ -83,8 +78,7 @@ export default function handleMovement(player) {
     const oldPos = store.getState().player.position;
     const newPos = getNewPosition(oldPos, direction);
 
-    if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos))
-      dispatchMove(direction, newPos);
+    if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos)) dispatchMove(direction, newPos);
   }
 
   function handleKeyDown(e) {

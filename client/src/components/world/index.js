@@ -15,8 +15,9 @@ const World = () => {
   return (
     <div
       style={{
-        position: 'relative',
-      }}>
+        position: 'relative'
+      }}
+    >
       <Map />
       <Player />
     </div>
