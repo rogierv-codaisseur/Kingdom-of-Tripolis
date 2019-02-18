@@ -1,7 +1,8 @@
-let nextMoveId = 0;
-
 const SEND_MOVE = 'SEND_MOVE';
 const RECEIVE_MOVE = 'RECEIVE_MOVE';
+const PLAYERS_LIST = 'PLAYERS_LIST';
+
+let nextMoveId = 0;
 
 export const sendMove = (action, player) => ({
   type: SEND_MOVE,
@@ -17,4 +18,9 @@ export const receiveMove = (action, player) => ({
   action,
   player,
   time: Date.now()
+});
+
+export const populatePlayersList = players => ({
+  type: PLAYERS_LIST,
+  players
 });

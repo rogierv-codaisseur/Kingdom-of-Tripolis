@@ -2,7 +2,7 @@ const WebSocket = require('ws');
 
 const wss = new WebSocket.Server({ port: 4000 });
 
-const users = [];
+const players = [];
 
 const broadcast = (data, ws) => {
   wss.clients.forEach(client => {
@@ -14,23 +14,32 @@ const broadcast = (data, ws) => {
 
 wss.on('connection', ws => {
   let index;
+
   ws.on('message', message => {
     const data = JSON.parse(message);
     console.log(message);
     switch (data.type) {
-      case 'ADD_USER': {
-        index = users.length;
-        users.push({ name: data.name, id: index + 1 });
+      case 'ADD_PLAYER': {
+        index = players.length;
+
+        let highestId = Math.max.apply(Math, players.map(player => player.id));
+
+        players.length === 0 ? (highestId = 0) : '';
+
+        players.push({ name: data.name, id: index + 1 });
+
+        console.log(players);
+
         ws.send(
           JSON.stringify({
-            type: 'USERS_LIST',
-            users
+            type: 'PLAYERS_LIST',
+            players
           })
         );
         broadcast(
           {
-            type: 'USERS_LIST',
-            users
+            type: 'PLAYERS_LIST',
+            players
           },
           ws
         );
@@ -52,11 +61,11 @@ wss.on('connection', ws => {
   });
 
   ws.on('close', () => {
-    users.splice(index, 1);
+    players.splice(index, 1);
     broadcast(
       {
-        type: 'USERS_LIST',
-        users
+        type: 'PLAYERS_LIST',
+        players
       },
       ws
     );
