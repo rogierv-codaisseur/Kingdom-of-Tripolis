@@ -1,11 +1,11 @@
 import React from 'react';
 import Map from '../map';
 import Player from '../player/index';
-import { tiles } from '../../data/maps/1';
+import tiles from '../../data/maps/1';
 import store from '../../store';
 import { ADD_TILES } from '../../constants/actionTypes';
 
-function World(props) {
+const World = () => {
   store.dispatch({
     type: ADD_TILES,
     payload: {
@@ -19,11 +19,12 @@ function World(props) {
         width: '600px',
         height: '300px',
         margin: '20px auto'
-      }}>
+      }}
+    >
       <Map />
       <Player />
     </div>
   );
-}
+};
 
 export default World;
