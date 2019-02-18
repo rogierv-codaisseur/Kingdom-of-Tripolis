@@ -22,6 +22,7 @@ const setupSocket = (dispatch, player) => {
         dispatch(receiveMove(data.action, data.player));
         break;
       case PLAYERS_LIST:
+        console.log(data.players);
         dispatch(populatePlayersList(data.players));
         break;
       default:
