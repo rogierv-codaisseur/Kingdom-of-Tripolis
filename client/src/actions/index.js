@@ -12,12 +12,20 @@ export const sendMove = (action, player) => ({
   position: action.position
 });
 
-export const receiveMove = (action, player, position) => ({
+export const receiveMove = (
+  action,
+  player,
+  position,
+  walkIndex,
+  spriteLocation
+) => ({
   type: RECEIVE_MOVE,
   id: nextMoveId++,
   action,
   player,
-  position
+  position,
+  walkIndex,
+  spriteLocation
 });
 
 export const populatePlayersList = players => ({

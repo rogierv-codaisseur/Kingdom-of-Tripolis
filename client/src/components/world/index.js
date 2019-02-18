@@ -1,5 +1,4 @@
 import React from 'react';
-// import Player from '../player'
 import Map from '../map';
 import Player from '../player/index';
 import { tiles } from '../../data/maps/1';

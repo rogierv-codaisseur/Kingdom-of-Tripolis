@@ -19,8 +19,15 @@ const setupSocket = (dispatch, player) => {
     const data = JSON.parse(event.data);
     switch (data.type) {
       case SEND_MOVE:
-        console.log('On message position: ', data.position);
-        dispatch(receiveMove(data.action, data.player, data.position));
+        dispatch(
+          receiveMove(
+            data.action,
+            data.player,
+            data.position,
+            data.walkIndex,
+            data.spriteLocation
+          )
+        );
         break;
       case PLAYERS_LIST:
         dispatch(populatePlayersList(data.players));

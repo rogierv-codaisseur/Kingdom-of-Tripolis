@@ -15,8 +15,8 @@ const player = (state = initialState, action) => {
       return {
         position: action.position,
         direction: action.action,
-        walkIndex: 1,
-        spriteLocation: '40px 0px'
+        walkIndex: action.walkIndex,
+        spriteLocation: action.spriteLocation
       };
     default:
       return state;

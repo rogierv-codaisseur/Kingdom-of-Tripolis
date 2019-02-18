@@ -72,7 +72,9 @@ export default function handleMovement(player) {
       type: 'SEND_MOVE',
       action: direction,
       player: 'Me',
-      position: newPos
+      position: newPos,
+      walkIndex,
+      spriteLocation: getSpriteLocation(direction, walkIndex)
     });
   }
 
@@ -101,7 +103,7 @@ export default function handleMovement(player) {
         return attemptMove('Down');
 
       default:
-        console.log(e.keyCode);
+        break;
     }
   }
 
