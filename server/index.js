@@ -14,14 +14,22 @@ const broadcast = (data, ws) => {
 
 wss.on('connection', ws => {
   let index;
+
   ws.on('message', message => {
     const data = JSON.parse(message);
     console.log(message);
-    console.log(data);
     switch (data.type) {
       case 'ADD_PLAYER': {
         index = players.length;
+
+        let highestId = Math.max.apply(Math, players.map(player => player.id));
+
+        players.length === 0 ? (highestId = 0) : '';
+
         players.push({ name: data.name, id: index + 1 });
+
+        console.log(players);
+
         ws.send(
           JSON.stringify({
             type: 'PLAYERS_LIST',

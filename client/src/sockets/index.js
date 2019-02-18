@@ -6,10 +6,6 @@ const setupSocket = (dispatch, player) => {
 
   const socket = new WebSocket('ws://localhost:4000');
 
-  // Send a message if the connection through sockets it open.
-  // socket.onopen = () =>
-  //   socket.send(JSON.stringify({ message: 'Socket opened' }));
-
   socket.onopen = () => {
     socket.send(
       JSON.stringify({
