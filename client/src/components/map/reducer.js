@@ -1,10 +1,12 @@
+import { ADD_TILES } from '../../constants/actionTypes';
+
 const initialState = {
   tiles: []
 };
 
 const mapReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'ADD_TILES':
+    case ADD_TILES:
       return {
         ...action.payload
       };

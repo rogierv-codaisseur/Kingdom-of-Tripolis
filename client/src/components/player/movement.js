@@ -1,5 +1,4 @@
 import store from '../../store';
-
 import {
   SPRITE_SIZE,
   MAP_HEIGHT,

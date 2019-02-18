@@ -7,7 +7,7 @@ import {
 let nextMoveId = 0;
 
 export const sendMove = (action, player) => ({
-  type: 'SEND_MOVE',
+  type: SEND_MOVE,
   id: nextMoveId++,
   action,
   player,
@@ -21,7 +21,7 @@ export const receiveMove = (
   walkIndex,
   spriteLocation
 ) => ({
-  type: 'RECEIVE_MOVE',
+  type: RECEIVE_MOVE,
   id: nextMoveId++,
   action,
   player,
@@ -31,6 +31,6 @@ export const receiveMove = (
 });
 
 export const populatePlayersList = players => ({
-  type: 'PLAYERS_LIST',
+  type: PLAYERS_LIST,
   players
 });
