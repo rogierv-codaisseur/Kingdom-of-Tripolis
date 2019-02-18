@@ -1,3 +1,5 @@
+import { MOVE_PLAYER, RECEIVE_MOVE } from '../constants/actionTypes';
+
 const initialState = {
   position: [0, 0],
   spriteLocation: '0px 0px',
@@ -7,11 +9,11 @@ const initialState = {
 
 const player = (state = initialState, action) => {
   switch (action.type) {
-    case 'MOVE_PLAYER':
+    case MOVE_PLAYER:
       return {
         ...action.payload
       };
-    case 'RECEIVE_MOVE':
+    case RECEIVE_MOVE:
       return {
         position: action.position,
         direction: action.action,

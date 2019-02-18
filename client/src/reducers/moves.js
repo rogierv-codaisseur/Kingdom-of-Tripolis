@@ -1,6 +1,8 @@
+import { SEND_MOVE, RECEIVE_MOVE } from '../constants/actionTypes';
+
 const moves = (state = [], action) => {
   switch (action.type) {
-    case 'SEND_MOVE':
+    case SEND_MOVE:
       return [
         ...state,
         {
@@ -12,7 +14,7 @@ const moves = (state = [], action) => {
           spriteLocation: action.spriteLocation
         }
       ];
-    case 'RECEIVE_MOVE':
+    case RECEIVE_MOVE:
       return [
         ...state,
         {

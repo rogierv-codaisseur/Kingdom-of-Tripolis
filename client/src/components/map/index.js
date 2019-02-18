@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './styles.css';
-
-const SPRITE_SIZE = 40;
+import { SPRITE_SIZE } from '../../constants/gameConstants';
 
 function getTileSprite(type) {
   // 0 -> 4 = passable; 5 -> 9 = impassable
