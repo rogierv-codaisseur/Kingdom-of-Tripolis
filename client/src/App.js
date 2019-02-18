@@ -1,11 +1,9 @@
 import React from 'react';
 import './App.css';
-import ControlsContainer from './components/controls/ControlsContainer';
-import World from './components/world/World';
+import World from './components/world';
 
 const App = () => (
   <div>
-    <ControlsContainer />
     <World />
   </div>
 );

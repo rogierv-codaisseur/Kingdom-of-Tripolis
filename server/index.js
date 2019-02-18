@@ -17,7 +17,6 @@ wss.on('connection', ws => {
 
   ws.on('message', message => {
     const data = JSON.parse(message);
-    console.log(message);
     switch (data.type) {
       case 'ADD_PLAYER': {
         index = players.length;
@@ -27,8 +26,6 @@ wss.on('connection', ws => {
         players.length === 0 ? (highestId = 0) : '';
 
         players.push({ name: data.name, id: index + 1 });
-
-        console.log(players);
 
         ws.send(
           JSON.stringify({
@@ -50,7 +47,10 @@ wss.on('connection', ws => {
           {
             type: 'SEND_MOVE',
             action: data.action,
-            player: data.player
+            player: data.player,
+            position: data.position,
+            walkIndex: data.walkIndex,
+            spriteLocation: data.spriteLocation
           },
           ws
         );

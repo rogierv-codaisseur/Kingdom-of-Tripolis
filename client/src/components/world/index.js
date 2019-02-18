@@ -1,6 +1,6 @@
 import React from 'react';
-// import Player from '../player'
 import Map from '../map';
+import Player from '../player/index';
 import { tiles } from '../../data/maps/1';
 import store from '../../store';
 
@@ -21,6 +21,7 @@ function World(props) {
         margin: '20px auto'
       }}>
       <Map />
+      <Player />
     </div>
   );
 }

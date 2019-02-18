@@ -4,28 +4,28 @@ import PropTypes from 'prop-types';
 const Controls = props => {
   const { dispatch } = props;
 
-  window.addEventListener('keydown', e => {
-    handleKeyDown(e);
-  });
+  // window.addEventListener('keydown', e => {
+  //   handleKeyDown(e);
+  // });
 
-  const handleKeyDown = e => {
-    e.preventDefault();
+  // const handleKeyDown = e => {
+  //   e.preventDefault();
 
-    switch (e.keyCode) {
-      case 32:
-        return dispatch('Shoot', 'Me');
-      case 37:
-        return dispatch('Left', 'Me');
-      case 38:
-        return dispatch('Up', 'Me');
-      case 39:
-        return dispatch('Right', 'Me');
-      case 40:
-        return dispatch('Down', 'Me');
-      default:
-        break;
-    }
-  };
+  //   switch (e.keyCode) {
+  //     case 32:
+  //       return dispatch('Shoot', 'Me');
+  //     case 37:
+  //       return dispatch('Left', 'Me');
+  //     case 38:
+  //       return dispatch('Up', 'Me');
+  //     case 39:
+  //       return dispatch('Right', 'Me');
+  //     case 40:
+  //       return dispatch('Down', 'Me');
+  //     default:
+  //       break;
+  //   }
+  // };
 
   const handleButton = e => {
     return dispatch(e, 'Me');

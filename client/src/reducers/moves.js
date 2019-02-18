@@ -1,6 +1,17 @@
 const moves = (state = [], action) => {
   switch (action.type) {
     case 'SEND_MOVE':
+      return [
+        ...state,
+        {
+          action: action.action,
+          player: action.player,
+          id: action.id,
+          position: action.position,
+          walkIndex: action.walkIndex,
+          spriteLocation: action.spriteLocation
+        }
+      ];
     case 'RECEIVE_MOVE':
       return [
         ...state,
@@ -8,7 +19,9 @@ const moves = (state = [], action) => {
           action: action.action,
           player: action.player,
           id: action.id,
-          time: action.time
+          position: action.position,
+          walkIndex: action.walkIndex,
+          spriteLocation: action.spriteLocation
         }
       ];
     default:
