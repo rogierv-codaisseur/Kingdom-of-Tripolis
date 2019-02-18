@@ -65,7 +65,6 @@ const Map = props => {
         height: '480px',
         border: '5px solid white',
         borderRadius: '10px',
-        margin: '10px auto'
       }}
     >
       {tiles.map(row => (

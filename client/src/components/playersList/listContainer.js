@@ -11,7 +11,6 @@ class PlayersListContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state, 'from container');
   
   return {
     players: state.players

@@ -2,7 +2,6 @@
 import * as React from 'react'
 
 export default function PlayersList(props) {
-  console.log(props, 'from players list');
   
   return (
   <div className='heroesList'>
@@ -18,7 +17,6 @@ export default function PlayersList(props) {
           <i>Player { player.id }</i>
           <br />
           { player.name }
-          <lb />
         </li>) 
       }
     </ul>
