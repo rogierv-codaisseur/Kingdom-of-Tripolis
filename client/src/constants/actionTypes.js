@@ -1,3 +1,4 @@
+export const ADD_PLAYER = 'ADD_PLAYER';
 export const ADD_TILES = 'ADD_TILES';
 export const SEND_MOVE = 'SEND_MOVE';
 export const RECEIVE_MOVE = 'RECEIVE_MOVE';
