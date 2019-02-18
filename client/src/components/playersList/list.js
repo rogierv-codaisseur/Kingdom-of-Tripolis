@@ -15,7 +15,10 @@ export default function PlayersList(props) {
         props.players && 
         props.players.map(player =>
         <li key={player.name} >
+          <i>Player { player.id }</i>
+          <br />
           { player.name }
+          <lb />
         </li>) 
       }
     </ul>

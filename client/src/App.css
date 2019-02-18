@@ -14,6 +14,21 @@
   color: white;
 }
 
+.heroesList li {
+  list-style-type: none;
+  padding-top: 10px;
+}
+
 .player {
   margin-top: 5px;
+}
+
+.information {
+  margin: 0 auto;
+  color: white;
+  display: flex;
+  justify-content: center;
+  font-style: italic;
+  color: grey;
+  padding-top: 5px;
 }
