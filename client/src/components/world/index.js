@@ -14,11 +14,7 @@ function World(props) {
   return (
     <div
       style={{
-        backgroundColor: 'lightgreen',
         position: 'relative',
-        width: '600px',
-        height: '300px',
-        margin: '20px auto'
       }}>
       <Map />
       <Player />

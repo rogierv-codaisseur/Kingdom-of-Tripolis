@@ -59,9 +59,8 @@ function Map(props) {
         left: '0px',
         width: '800px',
         height: '480px',
-        border: '3px solid green',
+        border: '5px solid white',
         borderRadius: '10px',
-        margin: '10px auto'
       }}>
       {props.tiles.map(row => (
         <MapRow key={row} tiles={row} />
