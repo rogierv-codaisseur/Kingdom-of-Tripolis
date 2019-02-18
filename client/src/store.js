@@ -24,7 +24,7 @@ const enhancer = compose(
 );
 const store = createStore(reducer, enhancer);
 
-const socket = setupSocket(store.dispatch);
+const socket = setupSocket(store.dispatch, username);
 
 sagaMiddleware.run(handleNewMessage, { socket, username });
 
