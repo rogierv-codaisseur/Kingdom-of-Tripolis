@@ -8,6 +8,7 @@ const initialState = {
 };
 
 const player = (state = initialState, action) => {
+  const { position, walkIndex, spriteLocation } = action;
   switch (action.type) {
     case MOVE_PLAYER:
       return {
@@ -15,10 +16,10 @@ const player = (state = initialState, action) => {
       };
     case RECEIVE_MOVE:
       return {
-        position: action.position,
+        position,
         direction: action.action,
-        walkIndex: action.walkIndex,
-        spriteLocation: action.spriteLocation
+        walkIndex,
+        spriteLocation
       };
     default:
       return state;

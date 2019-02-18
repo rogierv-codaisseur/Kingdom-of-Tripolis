@@ -1,15 +1,13 @@
 import { receiveMove, populatePlayersList } from '../actions';
+import { ADD_PLAYER, SEND_MOVE, PLAYERS_LIST } from '../constants/actionTypes';
 
 const setupSocket = (dispatch, player) => {
-  const SEND_MOVE = 'SEND_MOVE';
-  const PLAYERS_LIST = 'PLAYERS_LIST';
-
   const socket = new WebSocket('ws://localhost:4000');
 
   socket.onopen = () => {
     socket.send(
       JSON.stringify({
-        type: 'ADD_PLAYER',
+        type: ADD_PLAYER,
         name: player
       })
     );
