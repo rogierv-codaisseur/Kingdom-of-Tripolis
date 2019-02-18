@@ -64,7 +64,7 @@ function Map(props) {
         margin: '10px auto'
       }}>
       {props.tiles.map(row => (
-        <MapRow tiles={row} />
+        <MapRow key={row} tiles={row} />
       ))}
     </div>
   );

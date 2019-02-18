@@ -46,11 +46,13 @@ wss.on('connection', ws => {
         break;
       }
       case 'SEND_MOVE':
+        console.log('Server position', data.position);
         broadcast(
           {
             type: 'SEND_MOVE',
             action: data.action,
-            player: data.player
+            player: data.player,
+            position: data.position
           },
           ws
         );

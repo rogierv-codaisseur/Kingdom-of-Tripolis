@@ -9,15 +9,15 @@ export const sendMove = (action, player) => ({
   id: nextMoveId++,
   action,
   player,
-  time: Date.now()
+  position: action.position
 });
 
-export const receiveMove = (action, player) => ({
+export const receiveMove = (action, player, position) => ({
   type: RECEIVE_MOVE,
   id: nextMoveId++,
   action,
   player,
-  time: Date.now()
+  position
 });
 
 export const populatePlayersList = players => ({
