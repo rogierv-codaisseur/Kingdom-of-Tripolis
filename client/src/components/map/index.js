@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import './styles.css';
+import { SPRITE_SIZE } from '../../constants/gameConstants';
 
-const SPRITE_SIZE = 40;
-
-function getTileSprite(type) {
+const getTileSprite = type => {
   // 0 -> 4 = passable; 5 -> 9 = impassable
   switch (type) {
     case 0:
@@ -22,35 +22,39 @@ function getTileSprite(type) {
     default:
       return 'grass';
   }
-}
+};
 
-function MapTile(props) {
+const MapTile = props => {
+  const { tile } = props;
   return (
     <div
-      className={`tile ${getTileSprite(props.tile)}`}
+      className={`tile ${getTileSprite(tile)}`}
       style={{
         height: SPRITE_SIZE,
         width: SPRITE_SIZE
       }}
     />
   );
-}
+};
 
-function MapRow(props) {
+const MapRow = props => {
+  const { tiles } = props;
   return (
     <div
-      className='row'
+      className="row"
       style={{
         height: '40px'
-      }}>
-      {props.tiles.map(tile => (
+      }}
+    >
+      {tiles.map(tile => (
         <MapTile tile={tile} />
       ))}
     </div>
   );
-}
+};
 
-function Map(props) {
+const Map = props => {
+  const { tiles } = props;
   return (
     <div
       style={{
@@ -61,18 +65,32 @@ function Map(props) {
         height: '480px',
         border: '5px solid white',
         borderRadius: '10px',
-      }}>
-      {props.tiles.map(row => (
+        margin: '10px auto'
+      }}
+    >
+      {tiles.map(row => (
         <MapRow key={row} tiles={row} />
       ))}
     </div>
   );
-}
+};
 
-function mapStateToProps(state) {
+MapTile.propTypes = {
+  tile: PropTypes.number.isRequired
+};
+
+MapRow.propTypes = {
+  tiles: PropTypes.arrayOf(PropTypes.number).isRequired
+};
+
+Map.propTypes = {
+  tiles: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired
+};
+
+const mapStateToProps = state => {
   return {
     tiles: state.map.tiles
   };
-}
+};
 
 export default connect(mapStateToProps)(Map);

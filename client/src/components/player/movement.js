@@ -1,8 +1,9 @@
 import store from '../../store';
-
-const SPRITE_SIZE = 40;
-const MAP_HEIGHT = SPRITE_SIZE * 12;
-const MAP_WIDTH = SPRITE_SIZE * 20;
+import {
+  SPRITE_SIZE,
+  MAP_HEIGHT,
+  MAP_WIDTH
+} from '../../constants/gameConstants';
 
 export default function handleMovement(player) {
   function getNewPosition(oldPos, direction) {

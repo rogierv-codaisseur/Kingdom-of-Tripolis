@@ -3,10 +3,6 @@
   background-color: rgb(83, 196, 117);
 }
 
-.grass {
-  /* background-color: lightgreen; */
-}
-
 .rock {
   background-image: url('/tiles/rock.png')
 }

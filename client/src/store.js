@@ -17,7 +17,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 const enhancer = compose(
   applyMiddleware(sagaMiddleware),
-  devTools,
+  devTools
   // applyMiddleware(logger)
 );
 
