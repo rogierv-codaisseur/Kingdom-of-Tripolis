@@ -1,11 +1,13 @@
-const SEND_MOVE = 'SEND_MOVE';
-const RECEIVE_MOVE = 'RECEIVE_MOVE';
-const PLAYERS_LIST = 'PLAYERS_LIST';
+import {
+  SEND_MOVE,
+  RECEIVE_MOVE,
+  PLAYERS_LIST
+} from '../constants/actionTypes';
 
 let nextMoveId = 0;
 
 export const sendMove = (action, player) => ({
-  type: SEND_MOVE,
+  type: 'SEND_MOVE',
   id: nextMoveId++,
   action,
   player,
@@ -19,7 +21,7 @@ export const receiveMove = (
   walkIndex,
   spriteLocation
 ) => ({
-  type: RECEIVE_MOVE,
+  type: 'RECEIVE_MOVE',
   id: nextMoveId++,
   action,
   player,
@@ -29,6 +31,6 @@ export const receiveMove = (
 });
 
 export const populatePlayersList = players => ({
-  type: PLAYERS_LIST,
+  type: 'PLAYERS_LIST',
   players
 });
