@@ -8,7 +8,7 @@ const Player = props => {
   const { position, spriteLocation } = props;
 
   return (
-    <div
+    <div className='player'
       style={{
         position: 'absolute',
         top: position[1],
