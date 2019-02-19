@@ -13,9 +13,15 @@ const broadcast = (data, ws) => {
 };
 
 wss.on('connection', ws => {
+  console.log('new player', players.length);
+  if (players.length > 1) {
+    console.log('close connection');
+    ws.close();
+  }
   let index;
 
   ws.on('message', message => {
+    console.log(players);
     const data = JSON.parse(message);
     switch (data.type) {
       case 'ADD_PLAYER': {
