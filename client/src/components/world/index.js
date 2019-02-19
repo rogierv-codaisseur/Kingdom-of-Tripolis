@@ -1,6 +1,7 @@
 import React from 'react';
 import Map from '../map';
 import Player from '../player/index';
+import Player2 from '../player2/index';
 import tiles from '../../data/maps/1';
 import store from '../../store';
 import { ADD_TILES } from '../../constants/actionTypes';
@@ -20,6 +21,7 @@ const World = () => {
     >
       <Map />
       <Player />
+      <Player2 />
     </div>
   );
 };

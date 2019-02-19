@@ -1,9 +1,19 @@
-import { RECEIVE_MOVE, PLAYERS_LIST } from '../constants/actionTypes';
+import { RECEIVE_MOVE, RECEIVE_MOVE2, PLAYERS_LIST } from '../constants/actionTypes';
 
 let nextMoveId = 0;
 
 export const receiveMove = (action, player, position, walkIndex, spriteLocation) => ({
   type: RECEIVE_MOVE,
+  id: nextMoveId++,
+  action,
+  player,
+  position,
+  walkIndex,
+  spriteLocation
+});
+
+export const receiveMove2 = (action, player, position, walkIndex, spriteLocation) => ({
+  type: RECEIVE_MOVE2,
   id: nextMoveId++,
   action,
   player,

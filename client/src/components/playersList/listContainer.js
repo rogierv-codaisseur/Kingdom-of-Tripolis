@@ -1,20 +1,17 @@
-import * as React from 'react'
-import PlayersList from './list'
-import { connect } from 'react-redux'
+import * as React from 'react';
+import { connect } from 'react-redux';
+import PlayersList from './list';
 
 class PlayersListContainer extends React.Component {
-
-  render() {    
-    return <PlayersList players={this.props.players} />
+  render() {
+    return <PlayersList players={this.props.players} />;
   }
-
 }
 
-const mapStateToProps = (state) => {
-  
+const mapStateToProps = state => {
   return {
     players: state.players
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps)(PlayersListContainer)
+export default connect(mapStateToProps)(PlayersListContainer);

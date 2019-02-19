@@ -13,9 +13,15 @@ const broadcast = (data, ws) => {
 };
 
 wss.on('connection', ws => {
+  console.log('new player', players.length);
+  if (players.length > 1) {
+    console.log('close connection');
+    ws.close();
+  }
   let index;
 
   ws.on('message', message => {
+    console.log(players);
     const data = JSON.parse(message);
     switch (data.type) {
       case 'ADD_PLAYER': {
@@ -46,6 +52,19 @@ wss.on('connection', ws => {
         broadcast(
           {
             type: 'SEND_MOVE',
+            action: data.action,
+            player: data.player,
+            position: data.position,
+            walkIndex: data.walkIndex,
+            spriteLocation: data.spriteLocation
+          },
+          ws
+        );
+        break;
+      case 'SEND_MOVE2':
+        broadcast(
+          {
+            type: 'SEND_MOVE2',
             action: data.action,
             player: data.player,
             position: data.position,
