@@ -98,15 +98,19 @@ export default function handleEnemyMovement(enemy) {
 
     switch (e.keyCode) {
       case 37:
+      case 65:
         return attemptMove('Left');
 
       case 38:
+      case 87:
         return attemptMove('Up');
 
       case 39:
+      case 68:
         return attemptMove('Right');
 
       case 40:
+      case 83:
         return attemptMove('Down');
 
       default:

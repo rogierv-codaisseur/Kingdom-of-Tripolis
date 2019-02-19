@@ -1,7 +1,7 @@
 import { MOVE_PLAYER, RECEIVE_MOVE } from '../constants/actionTypes';
 
 const initialState = {
-  position: [0, 0],
+  position: [40, 0],
   spriteLocation: '0px 0px',
   direction: 'Right',
   walkIndex: 0
