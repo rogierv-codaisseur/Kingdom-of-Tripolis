@@ -55,6 +55,19 @@ wss.on('connection', ws => {
           ws
         );
         break;
+      case 'SEND_MOVE2':
+        broadcast(
+          {
+            type: 'SEND_MOVE2',
+            action: data.action,
+            player: data.player,
+            position: data.position,
+            walkIndex: data.walkIndex,
+            spriteLocation: data.spriteLocation
+          },
+          ws
+        );
+        break;
       default:
         break;
     }

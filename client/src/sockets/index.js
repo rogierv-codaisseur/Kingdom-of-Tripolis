@@ -1,5 +1,5 @@
-import { receiveMove, populatePlayersList } from '../actions';
-import { ADD_PLAYER, SEND_MOVE, PLAYERS_LIST } from '../constants/actionTypes';
+import { receiveMove, receiveMove2, populatePlayersList } from '../actions';
+import { ADD_PLAYER, SEND_MOVE, SEND_MOVE2, PLAYERS_LIST } from '../constants/actionTypes';
 
 const setupSocket = (dispatch, player) => {
   const socket = new WebSocket('ws://localhost:4000');
@@ -19,6 +19,9 @@ const setupSocket = (dispatch, player) => {
     switch (type) {
       case SEND_MOVE:
         dispatch(receiveMove(action, player, position, walkIndex, spriteLocation));
+        break;
+      case SEND_MOVE2:
+        dispatch(receiveMove2(action, player, position, walkIndex, spriteLocation));
         break;
       case PLAYERS_LIST:
         dispatch(populatePlayersList(players));
