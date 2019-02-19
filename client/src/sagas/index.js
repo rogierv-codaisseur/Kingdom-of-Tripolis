@@ -1,5 +1,5 @@
 import { takeEvery } from 'redux-saga/effects';
-import { SEND_MOVE, SEND_MOVE2, SEND_MOVE_ENEMY } from '../constants/actionTypes';
+import { SEND_MOVE, SEND_MOVE2, SEND_MOVE_ENEMY, SEND_MOVE_ENEMY2 } from '../constants/actionTypes';
 
 const handleNewMessage = function* handleNewMessage(params) {
   yield takeEvery(SEND_MOVE, action => {
@@ -14,6 +14,11 @@ const handleNewMessage = function* handleNewMessage(params) {
 
   yield takeEvery(SEND_MOVE_ENEMY, action => {
     action.enemy = params.username;
+    params.socket.send(JSON.stringify(action));
+  });
+
+  yield takeEvery(SEND_MOVE_ENEMY2, action => {
+    action.enemy2 = params.username;
     params.socket.send(JSON.stringify(action));
   });
 };

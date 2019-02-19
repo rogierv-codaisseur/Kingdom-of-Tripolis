@@ -1,5 +1,5 @@
-import { receiveMove, receiveMove2, receiveMoveEnemy, populatePlayersList } from '../actions';
-import { ADD_PLAYER, SEND_MOVE, SEND_MOVE2, SEND_MOVE_ENEMY, PLAYERS_LIST } from '../constants/actionTypes';
+import { receiveMove, receiveMove2, receiveMoveEnemy, populatePlayersList, receiveMoveEnemy2 } from '../actions';
+import { ADD_PLAYER, SEND_MOVE, SEND_MOVE2, SEND_MOVE_ENEMY, SEND_MOVE_ENEMY2, PLAYERS_LIST } from '../constants/actionTypes';
 
 const setupSocket = (dispatch, player) => {
   const port = process.env.PORT || 4000;
@@ -26,6 +26,9 @@ const setupSocket = (dispatch, player) => {
         break;
       case SEND_MOVE_ENEMY:
         dispatch(receiveMoveEnemy(action, player, position, walkIndex, spriteLocation));
+        break;
+      case SEND_MOVE_ENEMY2:
+        dispatch(receiveMoveEnemy2(action, player, position, walkIndex, spriteLocation));
         break;
       case PLAYERS_LIST:
         dispatch(populatePlayersList(players));
