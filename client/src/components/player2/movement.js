@@ -49,6 +49,7 @@ export default function handleMovement(player2) {
   function observeImpassable(oldPos, newPos) {
     const posPlayer = store.getState().player.position;
     const posEnemy = store.getState().enemy.position;
+    const posEnemy2 = store.getState().enemy2.position;
     const tiles = store.getState().map.tiles;
     const y = newPos[1] / SPRITE_SIZE;
     const x = newPos[0] / SPRITE_SIZE;
@@ -58,6 +59,9 @@ export default function handleMovement(player2) {
       return false;
     }
     if (posEnemy[0] === newPos[0] && posEnemy[1] === newPos[1]) {
+      return false;
+    }
+    if (posEnemy2[0] === newPos[0] && posEnemy2[1] === newPos[1]) {
       return false;
     }
     return nextTile < 5;
