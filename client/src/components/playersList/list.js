@@ -10,8 +10,7 @@ export default function PlayersList(props) {
           props.players.map(player => (
             <li key={player.name}>
               <i>
-Player
-                {player.id}
+              Player {player.id}
               </i>
               <br />
               {player.name}

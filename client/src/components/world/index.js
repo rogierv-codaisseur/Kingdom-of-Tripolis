@@ -5,6 +5,7 @@ import Enemy from '../enemy/index';
 import Player2 from '../player2/index';
 import level1 from '../../data/maps/1';
 import level2 from '../../data/maps/2';
+import Loot from '../loot/index'
 import store from '../../store';
 import { ADD_TILES } from '../../constants/actionTypes';
 
@@ -41,6 +42,7 @@ const World = ({ match }) => {
       <Player />
       <Enemy />
       <Player2 />
+      <Loot />
     </div>
   );
 };

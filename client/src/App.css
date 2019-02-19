@@ -21,6 +21,20 @@
 
 .player {
   margin-top: 5px;
+  margin-left: 5px;
+  z-index: 3;
+}
+
+.enemy {
+  margin-top: 5px;
+  margin-left: 5px;
+  z-index: 2;
+}
+
+.loot {
+  margin-top: 5px;
+  margin-left: 5px;
+  z-index: 1;
 }
 
 .information {
