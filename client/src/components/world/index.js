@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Map from '../map';
 import Player from '../player/index';
 import Enemy from '../enemy/index';
 import Player2 from '../player2/index';
 import level1 from '../../data/maps/1';
 import level2 from '../../data/maps/2';
-import Loot from '../loot/index'
+import Loot from '../loot/index';
 import store from '../../store';
 import { ADD_TILES } from '../../constants/actionTypes';
 
@@ -45,6 +46,15 @@ const World = ({ match }) => {
       <Loot />
     </div>
   );
+};
+
+World.propTypes = {
+  match: PropTypes.shape({
+    isExact: PropTypes.bool.isRequired,
+    path: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    params: PropTypes.object.isRequired
+  }).isRequired
 };
 
 export default World;
