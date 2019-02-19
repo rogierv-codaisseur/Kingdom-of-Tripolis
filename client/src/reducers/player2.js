@@ -22,8 +22,11 @@ const player2 = (state = initialState, action) => {
         walkIndex,
         spriteLocation,
       };
-    case PLAYER_TURN:
-      return !state.playerTurn
+      case PLAYER_TURN:
+      return {
+        ...state,
+        playerTurn: !state.playerTurn
+      }
 
     default:
       return state;

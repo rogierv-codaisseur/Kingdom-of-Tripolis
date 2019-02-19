@@ -23,7 +23,10 @@ const player = (state = initialState, action) => {
         spriteLocation,
       };
     case PLAYER_TURN:
-      return !state.playerTurn
+      return {
+        ...state,
+        playerTurn: !state.playerTurn
+      }
       
     default:
       return state;

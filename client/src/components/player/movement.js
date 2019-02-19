@@ -91,7 +91,7 @@ export default function handleMovement(player) {
     });
     store.dispatch({
       type: 'PLAYER_TURN',
-      playerTurn: !playerturn
+      playerTurn: playerturn
     });
     
   }
