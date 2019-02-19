@@ -49,6 +49,7 @@ export default function handleMovement(player) {
   function observeImpassable(oldPos, newPos) {
     const posPlayer2 = store.getState().player2.position;
     const enemyPos = store.getState().enemy.position;
+    const enemy2Pos = store.getState().enemy2.position;
     const tiles = store.getState().map.tiles;
     const y = newPos[1] / SPRITE_SIZE;
     const x = newPos[0] / SPRITE_SIZE;
@@ -57,7 +58,11 @@ export default function handleMovement(player) {
     if (posPlayer2[0] === newPos[0] && posPlayer2[1] === newPos[1]) {
       return false;
     }
+    // Player cannot pass enemies
     if (enemyPos[0] === newPos[0] && enemyPos[1] === newPos[1]) {
+      return false;
+    }
+    if (enemy2Pos[0] === newPos[0] && enemy2Pos[1] === newPos[1]) {
       return false;
     }
     return nextTile < 5;
@@ -86,8 +91,8 @@ export default function handleMovement(player) {
   function attemptMove(direction) {
     const oldPos = store.getState().player.position;
     const newPos = getNewPosition(oldPos, direction);
+    const playerName = store.getState().players[0].name;
     const lootPos = store.getState().loot.position;
-    const playerName = store.getState().players[0].name
     
     if (lootPos[0] === newPos[0] && lootPos[1] === newPos[1]) {
       alert(`${playerName} found the LOOT!`)

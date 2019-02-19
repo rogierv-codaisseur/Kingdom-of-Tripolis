@@ -1,17 +1,17 @@
 import store from '../../store';
 import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT } from '../../constants/gameConstants';
 
-export default function handleEnemyMovement(enemy) {
+export default function handleEnemyMovement(enemy2) {
   function getNewPosition(oldPos, direction) {
     switch (direction) {
       //switch left and right for enemy
-      case 'Right':
-        return [oldPos[0] - SPRITE_SIZE, oldPos[1]];
       case 'Left':
+        return [oldPos[0] - SPRITE_SIZE, oldPos[1]];
+      case 'Right':
         return [oldPos[0] + SPRITE_SIZE, oldPos[1]];
-      case 'Up':
-        return [oldPos[0], oldPos[1] - SPRITE_SIZE];
       case 'Down':
+        return [oldPos[0], oldPos[1] - SPRITE_SIZE];
+      case 'Up':
         return [oldPos[0], oldPos[1] + SPRITE_SIZE];
       default:
         return oldPos;
@@ -20,13 +20,13 @@ export default function handleEnemyMovement(enemy) {
 
   function getSpriteLocation(direction, walkIndex) {
     switch (direction) {
-      case 'Up':
-        return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 0}px`;
-      case 'Left':
-        return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 1}px`;
       case 'Down':
-        return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 2}px`;
+        return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 0}px`;
       case 'Right':
+        return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 1}px`;
+      case 'Up':
+        return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 2}px`;
+      case 'Left':
         return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 3}px`;
       default:
         return `0px 0px`;
@@ -34,7 +34,7 @@ export default function handleEnemyMovement(enemy) {
   }
 
   function getWalkIndex() {
-    const walkIndex = store.getState().enemy.walkIndex;
+    const walkIndex = store.getState().enemy2.walkIndex;
     return walkIndex >= 7 ? 0 : walkIndex + 1;
   }
 
@@ -50,7 +50,7 @@ export default function handleEnemyMovement(enemy) {
   function observeImpassable(oldPos, newPos) {
     const playerPos = store.getState().player.position;
     const playerPos2 = store.getState().player2.position;
-    const enemy2Pos = store.getState().enemy2.position;
+    const enemyPos = store.getState().enemy.position;
     const tiles = store.getState().map.tiles;
     const y = newPos[1] / SPRITE_SIZE;
     const x = newPos[0] / SPRITE_SIZE;
@@ -62,7 +62,7 @@ export default function handleEnemyMovement(enemy) {
     if (playerPos2[0] === newPos[0] && playerPos2[1] === newPos[1]) {
       return false;
     }
-    if (enemy2Pos[0] === newPos[0] && enemy2Pos[1] === newPos[1]) {
+    if (enemyPos[0] === newPos[0] && enemyPos[1] === newPos[1]) {
       return false;
     }
 
@@ -72,7 +72,7 @@ export default function handleEnemyMovement(enemy) {
   function dispatchMove(direction, newPos) {
     const walkIndex = getWalkIndex();
     store.dispatch({
-      type: 'MOVE_ENEMY',
+      type: 'MOVE_ENEMY2',
       payload: {
         position: newPos,
         direction,
@@ -81,7 +81,7 @@ export default function handleEnemyMovement(enemy) {
       }
     });
     store.dispatch({
-      type: 'SEND_MOVE_ENEMY',
+      type: 'SEND_MOVE_ENEMY2',
       action: direction,
       position: newPos,
       walkIndex,
@@ -90,7 +90,7 @@ export default function handleEnemyMovement(enemy) {
   }
 
   function attemptMove(direction) {
-    const oldPos = store.getState().enemy.position;
+    const oldPos = store.getState().enemy2.position;
     const newPos = getNewPosition(oldPos, direction);
     const lootPos = store.getState().loot.position;
     
@@ -129,5 +129,5 @@ export default function handleEnemyMovement(enemy) {
     handleKeyDown(e);
   });
 
-  return enemy;
+  return enemy2;
 }
