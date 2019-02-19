@@ -1,6 +1,8 @@
 const WebSocket = require('ws');
 
-const wss = new WebSocket.Server({ port: 4000 });
+const port = process.env.PORT || 4000;
+
+const wss = new WebSocket.Server({ port });
 
 const players = [];
 
@@ -13,11 +15,6 @@ const broadcast = (data, ws) => {
 };
 
 wss.on('connection', ws => {
-  console.log('new player', players.length);
-  if (players.length > 1) {
-    console.log('close connection');
-    ws.close();
-  }
   let index;
 
   ws.on('message', message => {

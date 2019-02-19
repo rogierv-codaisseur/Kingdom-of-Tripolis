@@ -38,7 +38,7 @@ const MapTile = props => {
 };
 
 function generateRandomNum() {
-  return Math.floor(Math.random() * 9999999)
+  return Math.floor(Math.random() * 9999999);
 }
 
 const MapRow = props => {
@@ -51,7 +51,7 @@ const MapRow = props => {
       }}
     >
       {tiles.map(tile => (
-        <MapTile tile={tile} key= { generateRandomNum() } />
+        <MapTile tile={tile} key={generateRandomNum()} />
       ))}
     </div>
   );

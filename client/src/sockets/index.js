@@ -2,7 +2,8 @@ import { receiveMove, receiveMove2, receiveMoveEnemy, populatePlayersList, recei
 import { ADD_PLAYER, SEND_MOVE, SEND_MOVE2, SEND_MOVE_ENEMY, SEND_MOVE_ENEMY2, PLAYERS_LIST } from '../constants/actionTypes';
 
 const setupSocket = (dispatch, player) => {
-  const socket = new WebSocket('ws://localhost:4000');
+  const port = process.env.PORT || 4000;
+  const socket = new WebSocket(`ws://localhost:${port}`);
 
   socket.onopen = () => {
     socket.send(

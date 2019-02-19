@@ -1,16 +1,19 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 
-export default function PlayersList(props) {
+const PlayersList = props => {
+  const { players } = props;
   return (
     <div className="heroesList">
       <h1>Heroes</h1>
       <ul>
-        {!props.players && 'Loading...'}
-        {props.players &&
-          props.players.map(player => (
+        {!players && 'Loading...'}
+        {players &&
+          players.map(player => (
             <li key={player.name}>
               <i>
-              Player {player.id}
+                Player
+                {player.id}
               </i>
               <br />
               {player.name}
@@ -19,4 +22,10 @@ export default function PlayersList(props) {
       </ul>
     </div>
   );
-}
+};
+
+PlayersList.propTypes = {
+  players: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired
+};
+
+export default PlayersList;
