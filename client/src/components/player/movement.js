@@ -47,10 +47,15 @@ export default function handleMovement(player) {
   }
 
   function observeImpassable(oldPos, newPos) {
+    const posPlayer2 = store.getState().player2.position;
     const tiles = store.getState().map.tiles;
     const y = newPos[1] / SPRITE_SIZE;
     const x = newPos[0] / SPRITE_SIZE;
     const nextTile = tiles[y][x];
+    // Player cannot pass another player
+    if (posPlayer2[0] === newPos[0] && posPlayer2[1] === newPos[1]) {
+      return false;
+    }
     return nextTile < 5;
   }
 
