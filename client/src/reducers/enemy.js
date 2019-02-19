@@ -1,4 +1,4 @@
-import { MOVE_ENEMY } from '../constants/actionTypes';
+import { MOVE_ENEMY, RECEIVE_MOVE_ENEMY } from '../constants/actionTypes';
 
 const initialState = {
   position: [600, 120],
@@ -8,19 +8,19 @@ const initialState = {
 };
 
 const enemy = (state = initialState, action) => {
-  // const { position, walkIndex, spriteLocation } = action;
+  const { position, walkIndex, spriteLocation } = action;
   switch (action.type) {
     case MOVE_ENEMY:
       return {
         ...action.payload
       };
-    // case RECEIVE_MOVE:
-    //   return {
-    //     position,
-    //     direction: action.action,
-    //     walkIndex,
-    //     spriteLocation
-    //   };
+    case RECEIVE_MOVE_ENEMY:
+      return {
+        position,
+        direction: action.action,
+        walkIndex,
+        spriteLocation
+      };
     default:
       return state;
   }
