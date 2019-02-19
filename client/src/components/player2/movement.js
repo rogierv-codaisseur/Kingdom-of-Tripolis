@@ -1,7 +1,7 @@
 import store from '../../store';
 import { SPRITE_SIZE, MAP_HEIGHT, MAP_WIDTH } from '../../constants/gameConstants';
 
-export default function handleMovement(player) {
+export default function handleMovement(player2) {
   function getNewPosition(oldPos, direction) {
     switch (direction) {
       case 'Left':
@@ -33,7 +33,7 @@ export default function handleMovement(player) {
   }
 
   function getWalkIndex() {
-    const walkIndex = store.getState().player.walkIndex;
+    const walkIndex = store.getState().player2.walkIndex;
     return walkIndex >= 7 ? 0 : walkIndex + 1;
   }
 
@@ -47,19 +47,14 @@ export default function handleMovement(player) {
   }
 
   function observeImpassable(oldPos, newPos) {
-
-    const posPlayer2 = store.getState().player2.position;
-    const enemyPos = store.getState().enemy.position;
+    const posPlayer = store.getState().player.position;
     const tiles = store.getState().map.tiles;
     const y = newPos[1] / SPRITE_SIZE;
     const x = newPos[0] / SPRITE_SIZE;
     const nextTile = tiles[y][x];
     // Player cannot pass another player
-    if (posPlayer2[0] === newPos[0] && posPlayer2[1] === newPos[1]) {
+    if (posPlayer[0] === newPos[0] && posPlayer[1] === newPos[1]) {
       return false;
-    }
-     if (enemyPos[0] === newPos[0] && enemyPos[1] === newPos[1]) {
-      return false
     }
     return nextTile < 5;
   }
@@ -67,7 +62,7 @@ export default function handleMovement(player) {
   function dispatchMove(direction, newPos) {
     const walkIndex = getWalkIndex();
     store.dispatch({
-      type: 'MOVE_PLAYER',
+      type: 'MOVE_PLAYER2',
       payload: {
         position: newPos,
         direction,
@@ -76,7 +71,7 @@ export default function handleMovement(player) {
       }
     });
     store.dispatch({
-      type: 'SEND_MOVE',
+      type: 'SEND_MOVE2',
       action: direction,
       position: newPos,
       walkIndex,
@@ -85,27 +80,26 @@ export default function handleMovement(player) {
   }
 
   function attemptMove(direction) {
-    const oldPos = store.getState().player.position;
+    const oldPos = store.getState().player2.position;
     const newPos = getNewPosition(oldPos, direction);
 
-    if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos)) 
-      dispatchMove(direction, newPos);
+    if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos)) dispatchMove(direction, newPos);
   }
 
   function handleKeyDown(e) {
     e.preventDefault();
 
     switch (e.keyCode) {
-      case 37:
+      case 65:
         return attemptMove('Left');
 
-      case 38:
+      case 87:
         return attemptMove('Up');
 
-      case 39:
+      case 68:
         return attemptMove('Right');
 
-      case 40:
+      case 83:
         return attemptMove('Down');
 
       default:
@@ -117,5 +111,5 @@ export default function handleMovement(player) {
     handleKeyDown(e);
   });
 
-  return player;
+  return player2;
 }

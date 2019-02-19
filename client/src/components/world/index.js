@@ -2,6 +2,7 @@ import React from 'react';
 import Map from '../map';
 import Player from '../player/index';
 import Enemy from '../enemy/index'
+import Player2 from '../player2/index';
 import tiles from '../../data/maps/1';
 import store from '../../store';
 import { ADD_TILES } from '../../constants/actionTypes';
@@ -22,6 +23,7 @@ const World = () => {
       <Map />
       <Player />
       <Enemy />
+      <Player2 />
     </div>
   );
 };
