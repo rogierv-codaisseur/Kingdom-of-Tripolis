@@ -1,5 +1,6 @@
 import store from '../../store';
 import { SPRITE_SIZE, MAP_HEIGHT, MAP_WIDTH } from '../../constants/gameConstants';
+import { MOVE_PLAYER, SEND_MOVE } from '../../constants/actionTypes';
 
 export default function handleMovement(player) {
   function getNewPosition(oldPos, direction) {
@@ -71,7 +72,7 @@ export default function handleMovement(player) {
   function dispatchMove(direction, newPos) {
     const walkIndex = getWalkIndex();
     store.dispatch({
-      type: 'MOVE_PLAYER',
+      type: MOVE_PLAYER,
       payload: {
         position: newPos,
         direction,
@@ -80,7 +81,7 @@ export default function handleMovement(player) {
       }
     });
     store.dispatch({
-      type: 'SEND_MOVE',
+      type: SEND_MOVE,
       action: direction,
       position: newPos,
       walkIndex,
@@ -93,9 +94,9 @@ export default function handleMovement(player) {
     const newPos = getNewPosition(oldPos, direction);
     const playerName = store.getState().players[0].name;
     const lootPos = store.getState().loot.position;
-    
+
     if (lootPos[0] === newPos[0] && lootPos[1] === newPos[1]) {
-      alert(`${playerName} found the LOOT!`)
+      alert(`${playerName} found the LOOT!`);
     }
 
     if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos)) dispatchMove(direction, newPos);

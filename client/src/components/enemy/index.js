@@ -1,7 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux'
-import walkSprite from './soldier_walk.png'
-import handleEnemyMovement from './movement'
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import walkSprite from './soldier_walk.png';
+import handleEnemyMovement from './movement';
 
 const Enemy = props => {
   const { position, spriteLocation } = props;
@@ -22,11 +23,15 @@ const Enemy = props => {
   );
 };
 
+Enemy.propTypes = {
+  position: PropTypes.arrayOf(PropTypes.number).isRequired,
+  spriteLocation: PropTypes.string.isRequired
+};
+
 function mapStateToProps(state) {
   return {
-    ...state.enemy,
-  }
+    ...state.enemy
+  };
 }
 
-export default connect(mapStateToProps)(handleEnemyMovement(Enemy))
-
+export default connect(mapStateToProps)(handleEnemyMovement(Enemy));

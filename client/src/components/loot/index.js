@@ -22,7 +22,7 @@ const Loot = props => {
 };
 
 Loot.propTypes = {
-  position: PropTypes.arrayOf(PropTypes.number).isRequired,
+  position: PropTypes.arrayOf(PropTypes.number).isRequired
 };
 
 function mapStateToProps(state) {

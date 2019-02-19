@@ -1,5 +1,6 @@
 import store from '../../store';
 import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT } from '../../constants/gameConstants';
+import { MOVE_ENEMY, SEND_MOVE_ENEMY } from '../../constants/actionTypes';
 
 export default function handleEnemyMovement(enemy) {
   function getNewPosition(oldPos, direction) {
@@ -72,7 +73,7 @@ export default function handleEnemyMovement(enemy) {
   function dispatchMove(direction, newPos) {
     const walkIndex = getWalkIndex();
     store.dispatch({
-      type: 'MOVE_ENEMY',
+      type: MOVE_ENEMY,
       payload: {
         position: newPos,
         direction,
@@ -81,7 +82,7 @@ export default function handleEnemyMovement(enemy) {
       }
     });
     store.dispatch({
-      type: 'SEND_MOVE_ENEMY',
+      type: SEND_MOVE_ENEMY,
       action: direction,
       position: newPos,
       walkIndex,
@@ -93,9 +94,9 @@ export default function handleEnemyMovement(enemy) {
     const oldPos = store.getState().enemy.position;
     const newPos = getNewPosition(oldPos, direction);
     const lootPos = store.getState().loot.position;
-    
+
     if (lootPos[0] === newPos[0] && lootPos[1] === newPos[1]) {
-      alert('The Guards have reclaimed the LOOT!')
+      alert('The Guards have reclaimed the LOOT!');
     }
 
     if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos)) dispatchMove(direction, newPos);
