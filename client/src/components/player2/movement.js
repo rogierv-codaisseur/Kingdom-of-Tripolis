@@ -86,6 +86,12 @@ export default function handleMovement(player2) {
   function attemptMove(direction) {
     const oldPos = store.getState().player2.position;
     const newPos = getNewPosition(oldPos, direction);
+    const lootPos = store.getState().loot.position;
+    const playerName = store.getState().players[1].name
+    
+    if (lootPos[0] === newPos[0] && lootPos[1] === newPos[1]) {
+      alert(`${playerName} found the LOOT!`)
+    }
 
     if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos)) dispatchMove(direction, newPos);
   }

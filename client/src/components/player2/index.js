@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import walkSprite from './player_walk.png';
+import walkSprite from './player2_walk.png';
 import handleMovement from './movement';
 
 const Player2 = props => {
