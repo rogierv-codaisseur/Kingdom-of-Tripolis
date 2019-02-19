@@ -6,7 +6,6 @@ import Enemy from '../enemy/index';
 import Enemy2 from '../enemy2/index';
 import Player2 from '../player2/index';
 import Loot from '../loot/index';
-import tiles from '../../data/maps/1';
 import level1 from '../../data/maps/1';
 import level2 from '../../data/maps/2';
 import store from '../../store';

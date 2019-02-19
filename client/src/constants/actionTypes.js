@@ -13,3 +13,4 @@ export const MOVE_ENEMY = 'MOVE_ENEMY';
 export const MOVE_ENEMY2 = 'MOVE_ENEMY2';
 export const MOVE_PLAYER2 = 'MOVE_PLAYER2';
 export const PLAYERS_LIST = 'PLAYERS_LIST';
+export const PLAYER_TURN = 'PLAYER_TURN';

@@ -1,10 +1,11 @@
-import { MOVE_PLAYER2, RECEIVE_MOVE2 } from '../constants/actionTypes';
+import { MOVE_PLAYER2, RECEIVE_MOVE2, PLAYER_TURN } from '../constants/actionTypes';
 
 const initialState = {
   position: [0, 0],
   spriteLocation: '0px 0px',
   direction: 'Right',
-  walkIndex: 0
+  walkIndex: 0,
+  playerTurn: false,
 };
 
 const player2 = (state = initialState, action) => {
@@ -19,8 +20,11 @@ const player2 = (state = initialState, action) => {
         position,
         direction: action.action,
         walkIndex,
-        spriteLocation
+        spriteLocation,
       };
+    case PLAYER_TURN:
+      return !state.playerTurn
+
     default:
       return state;
   }

@@ -10,7 +10,7 @@ const App = () => (
       <PlayersListContainer />
       <Route exact path="/:id" component={World} />
     </div>
-    <div className="information">use the key arrows to navigate around the map and SPACEBAR to attack</div>
+    <div className="information">use the key arrows to navigate around the map, avoid the Guards and claim your LOOT!</div>
   </div>
 );
 

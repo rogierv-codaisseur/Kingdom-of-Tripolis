@@ -70,14 +70,17 @@ export default function handleMovement(player) {
 
   function dispatchMove(direction, newPos) {
     const walkIndex = getWalkIndex();
+    const playerturn = store.getState().player.playerTurn;
+
+
     store.dispatch({
       type: 'MOVE_PLAYER',
       payload: {
         position: newPos,
         direction,
         walkIndex,
-        spriteLocation: getSpriteLocation(direction, walkIndex)
-      }
+        spriteLocation: getSpriteLocation(direction, walkIndex),
+      },
     });
     store.dispatch({
       type: 'SEND_MOVE',
@@ -86,6 +89,11 @@ export default function handleMovement(player) {
       walkIndex,
       spriteLocation: getSpriteLocation(direction, walkIndex)
     });
+    store.dispatch({
+      type: 'PLAYER_TURN',
+      playerTurn: !playerturn
+    });
+    
   }
 
   function attemptMove(direction) {
@@ -93,12 +101,15 @@ export default function handleMovement(player) {
     const newPos = getNewPosition(oldPos, direction);
     const playerName = store.getState().players[0].name;
     const lootPos = store.getState().loot.position;
+    const playerTurn = store.getState().player.playerTurn;
     
     if (lootPos[0] === newPos[0] && lootPos[1] === newPos[1]) {
       alert(`${playerName} found the LOOT!`)
     }
+    console.log(playerTurn);
+    
 
-    if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos)) dispatchMove(direction, newPos);
+    if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && playerTurn) dispatchMove(direction, newPos);
   }
 
   function handleKeyDown(e) {
