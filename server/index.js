@@ -18,7 +18,6 @@ wss.on('connection', ws => {
   let index;
 
   ws.on('message', message => {
-    console.log(players);
     const data = JSON.parse(message);
     switch (data.type) {
       case 'ADD_PLAYER': {
@@ -26,9 +25,9 @@ wss.on('connection', ws => {
 
         let highestId = Math.max.apply(Math, players.map(player => player.id));
 
-        players.length === 0 ? (highestId = 0) : '';
+        !players.length && (highestId = 0);
 
-        players.push({ name: data.name, id: index + 1 });
+        players.push({ name: data.name, id: highestId + 1 });
 
         ws.send(
           JSON.stringify({
