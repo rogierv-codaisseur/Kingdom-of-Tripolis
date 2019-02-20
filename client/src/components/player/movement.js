@@ -62,12 +62,12 @@ export default function handleMovement(player) {
     const x = newPos[0] / SPRITE_SIZE;
     const nextTile = tiles[y][x];
     // Player cannot pass enemies
-    if (enemyPos[0] === newPos[0] && enemyPos[1] === newPos[1]) {
-      return false;
-    }
-    if (enemy2Pos[0] === newPos[0] && enemy2Pos[1] === newPos[1]) {
-      return false;
-    }
+    // if (enemyPos[0] === newPos[0] && enemyPos[1] === newPos[1]) {
+    //   return false;
+    // }
+    // if (enemy2Pos[0] === newPos[0] && enemy2Pos[1] === newPos[1]) {
+    //   return false;
+    // }
     return nextTile < 5;
   }
 
@@ -99,6 +99,8 @@ export default function handleMovement(player) {
   }
 
   function attemptMove(direction) {
+    const enemyPos = store.getState().enemy.position;
+    const enemy2Pos = store.getState().enemy2.position;
     const oldPos = store.getState().player.position;
     const newPos = getNewPosition(oldPos, direction);
     const posPlayer2 = store.getState().player2.position;
@@ -107,6 +109,60 @@ export default function handleMovement(player) {
     const playerTurn = store.getState().player.playerTurn;
 
     if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && playerTurn) {
+      if (enemyPos[0] === newPos[0] && enemyPos[1] === newPos[1]) {
+        const walkIndex = getWalkIndex();
+        const playerTurn = store.getState().player.playerTurn;
+        const result = store.getState().player.result;
+
+        store.dispatch({
+          type: MOVE_PLAYER,
+          payload: {
+            position: [0, 0],
+            direction,
+            walkIndex,
+            spriteLocation: getSpriteLocation(direction, walkIndex),
+            playerTurn,
+            result
+          }
+        });
+        store.dispatch({
+          type: SEND_MOVE,
+          action: direction,
+          position: [0, 0],
+          walkIndex,
+          spriteLocation: getSpriteLocation(direction, walkIndex),
+          playerTurn,
+          result
+        });
+        return false;
+      }
+      if (enemy2Pos[0] === newPos[0] && enemy2Pos[1] === newPos[1]) {
+        const walkIndex = getWalkIndex();
+        const playerTurn = store.getState().player.playerTurn;
+        const result = store.getState().player.result;
+
+        store.dispatch({
+          type: MOVE_PLAYER,
+          payload: {
+            position: [0, 0],
+            direction,
+            walkIndex,
+            spriteLocation: getSpriteLocation(direction, walkIndex),
+            playerTurn,
+            result
+          }
+        });
+        store.dispatch({
+          type: SEND_MOVE,
+          action: direction,
+          position: [0, 0],
+          walkIndex,
+          spriteLocation: getSpriteLocation(direction, walkIndex),
+          playerTurn,
+          result
+        });
+        return false;
+      }
       if (lootPos[0] === newPos[0] && lootPos[1] === newPos[1]) {
         store.dispatch({ type: PLAYER_WON });
         store.dispatch({ type: PLAYER2_LOST });
