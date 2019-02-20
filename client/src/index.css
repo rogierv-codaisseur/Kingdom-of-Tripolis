@@ -1,5 +1,14 @@
 html {
-  background-color: black;
+  /* background-color: black; */
+  background-image: url("./data/wallpaper/home.jpg");
+
+  /* Full height */
+  height: 95%; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 body {

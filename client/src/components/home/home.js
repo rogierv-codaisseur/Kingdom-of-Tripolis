@@ -23,27 +23,8 @@ const HomeScreen = props => {
       <div className="homeStartText">
         {players.length === 1 ? "Waiting for more players!" : <Link to = '/1'>Start Game</Link>}
       </div>
-
-      {/* <div className="homeButtonDiv">
-        <button className="homeButton" ><Link to = '/'>Start Game</Link></button>
-      </div> */}
-
-      <div className="information">
-        GAME RULES:<br />
-        Player 1 - Use arrow keys<br />
-        Player 2 - Use W A S D<br />
-        Navigate around the map<br />
-        Avoid the Guards<br />
-        Claim your LOOT!
-      </div>
-
-
     </div>
   );
 };
-
-
-
-
 
 export default HomeScreen;
