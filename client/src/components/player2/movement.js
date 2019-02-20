@@ -97,7 +97,6 @@ export default function handleMovement(player2) {
     const posPlayer = store.getState().player.position;
     const lootPos = store.getState().loot.position;
     const playerTurn = store.getState().player2.playerTurn;
-    const playerName = store.getState().players[1].name;
 
     if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && playerTurn) {
       if (enemyPos[0] === newPos[0] && enemyPos[1] === newPos[1]) {
@@ -157,12 +156,17 @@ export default function handleMovement(player2) {
       if (lootPos[0] === newPos[0] && lootPos[1] === newPos[1]) {
         store.dispatch({ type: PLAYER2_WON });
         store.dispatch({ type: PLAYER_LOST });
-        alert(`You won! ${playerName} found the LOOT!`);
       }
       if (lootPos[0] === posPlayer[0] && lootPos[1] === posPlayer[1]) {
         store.dispatch({ type: PLAYER2_LOST });
         store.dispatch({ type: PLAYER_WON });
-        alert(`You lose! ${playerName} found the LOOT!`);
+      }
+      const resultPlayer = store.getState().player.result;
+      if (resultPlayer === 'Won') {
+        alert('Other player won');
+      }
+      if (resultPlayer === 'Lost') {
+        alert('You won');
       }
       dispatchMove(direction, newPos);
     }
