@@ -1,8 +1,10 @@
 const WebSocket = require('ws');
 
-const wss = new WebSocket.Server({ port: 4000 });
+const port = process.env.PORT || 4000;
 
-const users = [];
+const wss = new WebSocket.Server({ port });
+
+const players = [];
 
 const broadcast = (data, ws) => {
   wss.clients.forEach(client => {
@@ -14,23 +16,29 @@ const broadcast = (data, ws) => {
 
 wss.on('connection', ws => {
   let index;
+
   ws.on('message', message => {
     const data = JSON.parse(message);
-    console.log(message);
     switch (data.type) {
-      case 'ADD_USER': {
-        index = users.length;
-        users.push({ name: data.name, id: index + 1 });
+      case 'ADD_PLAYER': {
+        index = players.length;
+
+        let highestId = Math.max.apply(Math, players.map(player => player.id));
+
+        !players.length && (highestId = 0);
+
+        players.push({ name: data.name, id: highestId + 1 });
+
         ws.send(
           JSON.stringify({
-            type: 'USERS_LIST',
-            users
+            type: 'PLAYERS_LIST',
+            players
           })
         );
         broadcast(
           {
-            type: 'USERS_LIST',
-            users
+            type: 'PLAYERS_LIST',
+            players
           },
           ws
         );
@@ -41,10 +49,76 @@ wss.on('connection', ws => {
           {
             type: 'SEND_MOVE',
             action: data.action,
-            player: data.player
+            player: data.player,
+            position: data.position,
+            walkIndex: data.walkIndex,
+            spriteLocation: data.spriteLocation,
+            playerTurn: data.playerTurn,
+            result: data.result
           },
           ws
         );
+        break;
+      case 'SEND_MOVE2':
+        broadcast(
+          {
+            type: 'SEND_MOVE2',
+            action: data.action,
+            player: data.player,
+            position: data.position,
+            walkIndex: data.walkIndex,
+            spriteLocation: data.spriteLocation,
+            playerTurn: data.playerTurn,
+            result: data.result
+          },
+          ws
+        );
+        break;
+      case 'SEND_MOVE_ENEMY':
+        broadcast(
+          {
+            type: 'SEND_MOVE_ENEMY',
+            action: data.action,
+            player: data.player,
+            position: data.position,
+            walkIndex: data.walkIndex,
+            spriteLocation: data.spriteLocation
+          },
+          ws
+        );
+        break;
+      case 'SEND_MOVE_ENEMY2':
+        broadcast(
+          {
+            type: 'SEND_MOVE_ENEMY2',
+            action: data.action,
+            player: data.player,
+            position: data.position,
+            walkIndex: data.walkIndex,
+            spriteLocation: data.spriteLocation
+          },
+          ws
+        );
+        break;
+      case 'SEND_PLAYER_WON':
+        broadcast({
+          type: 'PLAYER_WON'
+        });
+        break;
+      case 'SEND_PLAYER_LOST':
+        broadcast({
+          type: 'PLAYER_LOST'
+        });
+        break;
+      case 'SEND_PLAYER2_WON':
+        broadcast({
+          type: 'PLAYER2_WON'
+        });
+        break;
+      case 'SEND_PLAYER2_LOST':
+        broadcast({
+          type: 'PLAYER2_LOST'
+        });
         break;
       default:
         break;
@@ -52,11 +126,11 @@ wss.on('connection', ws => {
   });
 
   ws.on('close', () => {
-    users.splice(index, 1);
+    players.splice(index, 1);
     broadcast(
       {
-        type: 'USERS_LIST',
-        users
+        type: 'PLAYERS_LIST',
+        players
       },
       ws
     );

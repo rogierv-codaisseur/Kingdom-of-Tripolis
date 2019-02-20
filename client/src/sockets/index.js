@@ -1,19 +1,60 @@
-import { receiveMove } from '../actions';
+import { receiveMove, receiveMove2, receiveMoveEnemy, populatePlayersList, receiveMoveEnemy2 } from '../actions';
+import {
+  ADD_PLAYER,
+  SEND_MOVE,
+  SEND_MOVE2,
+  SEND_MOVE_ENEMY,
+  SEND_MOVE_ENEMY2,
+  PLAYERS_LIST,
+  PLAYER_WON,
+  PLAYER_LOST,
+  PLAYER2_WON,
+  PLAYER2_LOST
+} from '../constants/actionTypes';
 
-const setupSocket = dispatch => {
-  const SEND_MOVE = 'SEND_MOVE';
+const setupSocket = (dispatch, player) => {
+  const port = process.env.PORT || 4000;
+  const socket = new WebSocket(`ws://localhost:${port}`);
 
-  const socket = new WebSocket('ws://localhost:4000');
-
-  // Send a message if the connection through sockets it open.
-  // socket.onopen = () =>
-  //   socket.send(JSON.stringify({ message: 'Socket opened' }));
+  socket.onopen = () => {
+    socket.send(
+      JSON.stringify({
+        type: ADD_PLAYER,
+        name: player
+      })
+    );
+  };
 
   socket.onmessage = event => {
     const data = JSON.parse(event.data);
-    switch (data.type) {
+    const { action, player, players, position, spriteLocation, type, walkIndex, playerTurn, result } = data;
+    switch (type) {
       case SEND_MOVE:
-        dispatch(receiveMove(data.action, data.player));
+        dispatch(receiveMove(action, player, position, walkIndex, spriteLocation, playerTurn, result));
+        break;
+      case SEND_MOVE2:
+        dispatch(receiveMove2(action, player, position, walkIndex, spriteLocation, playerTurn, result));
+        break;
+      case SEND_MOVE_ENEMY:
+        dispatch(receiveMoveEnemy(action, player, position, walkIndex, spriteLocation));
+        break;
+      case SEND_MOVE_ENEMY2:
+        dispatch(receiveMoveEnemy2(action, player, position, walkIndex, spriteLocation));
+        break;
+      case PLAYERS_LIST:
+        dispatch(populatePlayersList(players));
+        break;
+      case PLAYER_WON:
+        dispatch({ type: 'PLAYER_WON' });
+        break;
+      case PLAYER_LOST:
+        dispatch({ type: 'PLAYER_LOST' });
+        break;
+      case PLAYER2_WON:
+        dispatch({ type: 'PLAYER2_WON' });
+        break;
+      case PLAYER2_LOST:
+        dispatch({ type: 'PLAYER2_LOST' });
         break;
       default:
         break;

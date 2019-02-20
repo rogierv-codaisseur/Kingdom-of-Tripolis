@@ -1,33 +1,130 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.playScreen {
+  margin-top: 20px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+
+}
+
+.heroesList {
+  width: 200px;
+  height: 480px;
+  border: 5px solid white;
+  border-radius: 10px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.heroesList li {
+  list-style-type: none;
+  padding-top: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.player {
+  margin-top: 5px;
+  margin-left: 5px;
+  z-index: 3;
+}
+
+.enemy {
+  margin-top: 5px;
+  margin-left: 5px;
+  z-index: 2;
+}
+
+.loot {
+  margin-top: 5px;
+  margin-left: 5px;
+  z-index: 1;
+}
+
+h1 {
+  color: lightgreen;
+  font-size: 1.5rem;
+  margin: 2rem;
+}
+
+.playersId {
+  color: lightgreen;
+}
+
+.HomeScreen {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  width: 1200px;
+  height: 600px;
+  color: white;
+  margin: 0 auto;
+  border: 1 solid white;
+  background-clip: green
+}
+
+.HomeScreen li {
+  list-style-type: none;
+  padding-top: 10px;
+}
+
+.homeId {
+  color: lightgreen;
+}
+
+.homeName {
+  color: white;
+}
+
+.homeStartText {
+  height: 300px;
+  justify-items: center;
+  margin: auto auto;
+  text-align: center;
+  color: grey;
+  font-size: 3rem;
+}
+
+.homeList {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.homePlayers {
+  display: flex;
+  flex-direction: row;
+}
+
+.gameTitle {
+  font-size: 5rem;
+  text-align: center;
+}
+
+.homeButton {
+  width: 200px;
+  height: 100px;
+  background-color: dimgray;
+  color: white;
+}
+
+.homeButtonDiv {
+  margin: 0 auto;
+  padding-top: 50px;
+}
+
+.information {
+  text-align: center;
+}
+
+.information2 {
+  text-align: center;
+  padding-top: 100px;
+  color: rgb(127, 179, 127);
+  font-size: 0.8rem;
+}
+
+.gameHeader {
+  margin: 0 auto;
+  width: 90vw;
+  height: 60px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
 }
