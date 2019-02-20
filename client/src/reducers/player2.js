@@ -11,9 +11,14 @@ const initialState = {
 const player2 = (state = initialState, action) => {
   const { position, walkIndex, spriteLocation } = action;
   switch (action.type) {
+    case PLAYER_TURN:
+    return {
+      ...state,
+      playerTurn: !state.playerTurn
+    }
     case MOVE_PLAYER2:
       return {
-        ...action.payload
+        ...action.payload, playerTurn: state.playerTurn
       };
     case RECEIVE_MOVE2:
       return {
@@ -22,11 +27,7 @@ const player2 = (state = initialState, action) => {
         walkIndex,
         spriteLocation,
       };
-      case PLAYER_TURN:
-      return {
-        ...state,
-        playerTurn: !state.playerTurn
-      }
+
 
     default:
       return state;

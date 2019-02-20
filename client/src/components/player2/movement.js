@@ -69,8 +69,11 @@ export default function handleMovement(player2) {
 
   function dispatchMove(direction, newPos) {
     const walkIndex = getWalkIndex();
-    const playerturn = store.getState().player2.playerTurn;
+    const playerTurn = store.getState().player2.playerTurn;
 
+    store.dispatch({
+      type: 'PLAYER_TURN',
+    });
     store.dispatch({
       type: 'MOVE_PLAYER2',
       payload: {
@@ -78,6 +81,7 @@ export default function handleMovement(player2) {
         direction,
         walkIndex,
         spriteLocation: getSpriteLocation(direction, walkIndex),
+        playerTurn
       }
     });
     store.dispatch({
@@ -87,10 +91,7 @@ export default function handleMovement(player2) {
       walkIndex,
       spriteLocation: getSpriteLocation(direction, walkIndex)
     });
-    store.dispatch({
-      type: 'PLAYER_TURN',
-      playerTurn: playerturn
-    });
+
   }
 
   function attemptMove(direction) {
