@@ -5,7 +5,11 @@ import {
   SEND_MOVE2,
   SEND_MOVE_ENEMY,
   SEND_MOVE_ENEMY2,
-  PLAYERS_LIST
+  PLAYERS_LIST,
+  PLAYER_WON,
+  PLAYER_LOST,
+  PLAYER2_WON,
+  PLAYER2_LOST
 } from '../constants/actionTypes';
 
 const setupSocket = (dispatch, player) => {
@@ -39,6 +43,18 @@ const setupSocket = (dispatch, player) => {
         break;
       case PLAYERS_LIST:
         dispatch(populatePlayersList(players));
+        break;
+      case PLAYER_WON:
+        dispatch({ type: 'PLAYER_WON' });
+        break;
+      case PLAYER_LOST:
+        dispatch({ type: 'PLAYER_LOST' });
+        break;
+      case PLAYER2_WON:
+        dispatch({ type: 'PLAYER2_WON' });
+        break;
+      case PLAYER2_LOST:
+        dispatch({ type: 'PLAYER2_LOST' });
         break;
       default:
         break;
