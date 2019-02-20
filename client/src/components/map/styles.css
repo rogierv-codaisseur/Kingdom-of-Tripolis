@@ -18,3 +18,7 @@
 .enemy {
   background-image: url('/tiles/enemy.png')
 }
+
+.portal {
+  background-image: url('/tiles/portal.png')
+}

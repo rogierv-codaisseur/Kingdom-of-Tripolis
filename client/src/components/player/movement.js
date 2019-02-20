@@ -117,7 +117,7 @@ export default function handleMovement(player) {
         store.dispatch({
           type: MOVE_PLAYER,
           payload: {
-            position: [0, 0],
+            position: [80, 0],
             direction,
             walkIndex,
             spriteLocation: getSpriteLocation(direction, walkIndex),
@@ -128,7 +128,7 @@ export default function handleMovement(player) {
         store.dispatch({
           type: SEND_MOVE,
           action: direction,
-          position: [0, 0],
+          position: [80, 0],
           walkIndex,
           spriteLocation: getSpriteLocation(direction, walkIndex),
           playerTurn,
@@ -144,7 +144,7 @@ export default function handleMovement(player) {
         store.dispatch({
           type: MOVE_PLAYER,
           payload: {
-            position: [0, 0],
+            position: [80, 0],
             direction,
             walkIndex,
             spriteLocation: getSpriteLocation(direction, walkIndex),
@@ -155,7 +155,7 @@ export default function handleMovement(player) {
         store.dispatch({
           type: SEND_MOVE,
           action: direction,
-          position: [0, 0],
+          position: [80, 0],
           walkIndex,
           spriteLocation: getSpriteLocation(direction, walkIndex),
           playerTurn,
