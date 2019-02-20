@@ -1,5 +1,6 @@
 const initialState = {
-  position: [80, 40]
+  // position: [680, 360]
+  position: [80, 80]
 };
 
 const loot = (state = initialState) => {

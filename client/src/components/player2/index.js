@@ -1,11 +1,34 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import walkSprite from './player2_walk.png';
 import handleMovement from './movement';
 
 const Player2 = props => {
-  const { position, spriteLocation } = props;
+  const { position, spriteLocation, result } = props;
+
+  if (result === 'Won') {
+    return (
+      <div
+        style={{
+          backgroundColor: 'yellow',
+          position: 'absolute',
+          top: '0',
+          left: '0',
+          width: '810px',
+          height: '490px',
+          zIndex: 9,
+          fontSize: '3rem'
+        }}
+      >
+        Player 2 won!
+        <button type="button">
+          <Link to="/">Go back to the Homescreen</Link>
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div
@@ -25,7 +48,8 @@ const Player2 = props => {
 
 Player2.propTypes = {
   position: PropTypes.arrayOf(PropTypes.number).isRequired,
-  spriteLocation: PropTypes.string.isRequired
+  spriteLocation: PropTypes.string.isRequired,
+  result: PropTypes.string.isRequired
 };
 
 function mapStateToProps(state) {
