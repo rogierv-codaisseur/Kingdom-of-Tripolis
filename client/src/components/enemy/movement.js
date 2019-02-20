@@ -1,5 +1,6 @@
+import { isEqual } from 'lodash';
 import store from '../../store';
-import { moveEnemy, sendMoveEnemy } from '../../actions';
+import { move, sendMove } from '../../actions';
 import {
   getNewPosition,
   getSpriteLocation,
@@ -9,27 +10,25 @@ import {
 } from '../../helpers/handleMovement';
 import { MOVE_ENEMY, SEND_MOVE_ENEMY } from '../../constants/actionTypes';
 
-export default function handleEnemyMovement(enemy) {
-  const dispatchMove = (direction, newPos) => {
-    const walkIndex = getWalkIndex();
-    const spriteLocation = getSpriteLocation(direction, walkIndex, 1);
-    store.dispatch(moveEnemy(MOVE_ENEMY, newPos, direction, walkIndex, spriteLocation));
-    store.dispatch(sendMoveEnemy(SEND_MOVE_ENEMY, newPos, direction, walkIndex, spriteLocation));
+const dispatchMove = (direction, newPos) => {
+  const walkIndex = getWalkIndex();
+  const spriteLocation = getSpriteLocation(direction, walkIndex, 1);
+  store.dispatch(move(MOVE_ENEMY, newPos, direction, walkIndex, spriteLocation));
+  store.dispatch(sendMove(SEND_MOVE_ENEMY, newPos, direction, walkIndex, spriteLocation));
+};
+
+const handleEnemyMovement = enemy => {
+  const attemptMove = direction => {
+    const { enemy, loot } = store.getState();
+    const newPos = getNewPosition(enemy.position, direction, 1);
+
+    if (isEqual(loot.position, newPos)) alert('The Guards have reclaimed the LOOT!');
+
+    if (observeBoundaries(enemy.position, newPos) && observeImpassable(enemy.position, newPos, true))
+      dispatchMove(direction, newPos);
   };
 
-  function attemptMove(direction) {
-    const oldPos = store.getState().enemy.position;
-    const newPos = getNewPosition(oldPos, direction, 1);
-    const lootPos = store.getState().loot.position;
-
-    if (lootPos[0] === newPos[0] && lootPos[1] === newPos[1]) {
-      alert('The Guards have reclaimed the LOOT!');
-    }
-
-    if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos, true)) dispatchMove(direction, newPos);
-  }
-
-  function handleKeyDown(e) {
+  const handleKeyDown = e => {
     e.preventDefault();
 
     switch (e.keyCode) {
@@ -52,10 +51,12 @@ export default function handleEnemyMovement(enemy) {
       default:
         break;
     }
-  }
+  };
   window.addEventListener('keydown', e => {
     handleKeyDown(e);
   });
 
   return enemy;
-}
+};
+
+export default handleEnemyMovement;

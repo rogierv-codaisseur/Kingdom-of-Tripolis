@@ -57,20 +57,22 @@ export const populatePlayersList = players => ({
   players
 });
 
-export const moveEnemy = (typeAction, newPos, direction, walkIndex, spriteLocation) => ({
+export const move = (typeAction, newPos, direction, walkIndex, spriteLocation, result) => ({
   type: typeAction,
   payload: {
     position: newPos,
     direction,
     walkIndex,
-    spriteLocation
+    spriteLocation,
+    result
   }
 });
 
-export const sendMoveEnemy = (typeAction, newPos, direction, walkIndex, spriteLocation) => ({
+export const sendMove = (typeAction, newPos, direction, walkIndex, spriteLocation, result) => ({
   type: typeAction,
   action: direction,
   position: newPos,
   walkIndex,
-  spriteLocation
+  spriteLocation,
+  result
 });
