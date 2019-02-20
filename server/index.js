@@ -52,7 +52,8 @@ wss.on('connection', ws => {
             player: data.player,
             position: data.position,
             walkIndex: data.walkIndex,
-            spriteLocation: data.spriteLocation
+            spriteLocation: data.spriteLocation,
+            playerTurn: data.playerTurn
           },
           ws
         );
@@ -65,7 +66,8 @@ wss.on('connection', ws => {
             player: data.player,
             position: data.position,
             walkIndex: data.walkIndex,
-            spriteLocation: data.spriteLocation
+            spriteLocation: data.spriteLocation,
+            playerTurn: data.playerTurn
           },
           ws
         );

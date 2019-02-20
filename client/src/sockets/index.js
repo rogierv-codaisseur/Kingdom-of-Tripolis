@@ -23,13 +23,15 @@ const setupSocket = (dispatch, player) => {
 
   socket.onmessage = event => {
     const data = JSON.parse(event.data);
-    const { action, player, players, position, spriteLocation, type, walkIndex } = data;
+    const { action, player, players, position, spriteLocation, type, walkIndex, playerTurn } = data;
     switch (type) {
       case SEND_MOVE:
-        dispatch(receiveMove(action, player, position, walkIndex, spriteLocation));
+        dispatch(receiveMove(action, player, position, walkIndex, spriteLocation, playerTurn));
+        dispatch({ type: 'PLAYER_TURN' });
         break;
       case SEND_MOVE2:
-        dispatch(receiveMove2(action, player, position, walkIndex, spriteLocation));
+        dispatch(receiveMove2(action, player, position, walkIndex, spriteLocation, playerTurn));
+        dispatch({ type: 'PLAYER_TURN' });
         break;
       case SEND_MOVE_ENEMY:
         dispatch(receiveMoveEnemy(action, player, position, walkIndex, spriteLocation));

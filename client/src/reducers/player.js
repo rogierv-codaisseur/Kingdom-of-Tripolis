@@ -5,7 +5,7 @@ const initialState = {
   spriteLocation: '0px 0px',
   direction: 'Right',
   walkIndex: 0,
-  playerTurn: true,
+  playerTurn: true
 };
 
 const player = (state = initialState, action) => {
@@ -15,10 +15,11 @@ const player = (state = initialState, action) => {
       return {
         ...state,
         playerTurn: !state.playerTurn
-      }
+      };
     case MOVE_PLAYER:
       return {
-        ...action.payload, playerTurn: state.playerTurn
+        ...action.payload,
+        playerTurn: state.playerTurn
       };
     case RECEIVE_MOVE:
       return {
@@ -26,9 +27,9 @@ const player = (state = initialState, action) => {
         direction: action.action,
         walkIndex,
         spriteLocation,
+        playerTurn: state.playerTurn
       };
-    
-      
+
     default:
       return state;
   }

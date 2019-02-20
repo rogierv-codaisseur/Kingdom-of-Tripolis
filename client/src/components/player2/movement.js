@@ -73,7 +73,7 @@ export default function handleMovement(player2) {
     const playerTurn = store.getState().player2.playerTurn;
 
     store.dispatch({
-      type: 'PLAYER_TURN',
+      type: 'PLAYER_TURN'
     });
     store.dispatch({
       type: MOVE_PLAYER2,
@@ -90,23 +90,28 @@ export default function handleMovement(player2) {
       action: direction,
       position: newPos,
       walkIndex,
-      spriteLocation: getSpriteLocation(direction, walkIndex)
+      spriteLocation: getSpriteLocation(direction, walkIndex),
+      playerTurn
     });
-
   }
 
   function attemptMove(direction) {
     const oldPos = store.getState().player2.position;
     const newPos = getNewPosition(oldPos, direction);
+    const posPlayer = store.getState().player.position;
     const lootPos = store.getState().loot.position;
     const playerTurn = store.getState().player2.playerTurn;
     const playerName = store.getState().players[1].name;
 
-    if (lootPos[0] === newPos[0] && lootPos[1] === newPos[1]) {
-      alert(`${playerName} found the LOOT!`);
+    if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && playerTurn) {
+      dispatchMove(direction, newPos);
+      if (lootPos[0] === newPos[0] && lootPos[1] === newPos[1]) {
+        alert(`You won! ${playerName} found the LOOT!`);
+      }
+      if (lootPos[0] === posPlayer[0] && lootPos[1] === posPlayer[1]) {
+        alert(`You lose! ${playerName} found the LOOT!`);
+      }
     }
-
-    if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && playerTurn) dispatchMove(direction, newPos);
   }
 
   function handleKeyDown(e) {
