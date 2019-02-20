@@ -99,7 +99,6 @@ export default function handleMovement(player2) {
     const oldPos = store.getState().player2.position;
     const newPos = getNewPosition(oldPos, direction);
     const lootPos = store.getState().loot.position;
-    const playerName = store.getState().players[1].name;
     const playerTurn = store.getState().player2.playerTurn;
     const playerName = store.getState().players[1].name;
 
