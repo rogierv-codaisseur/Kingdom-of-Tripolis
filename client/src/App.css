@@ -37,16 +37,6 @@
   z-index: 1;
 }
 
-.information {
-  margin: 0 auto;
-  color: white;
-  display: flex;
-  justify-content: center;
-  font-style: italic;
-  color: grey;
-  padding-top: 5px;
-}
-
 h1 {
   color: lightgreen;
   font-size: 1.5rem;
@@ -126,13 +116,14 @@ h1 {
 .information2 {
   text-align: center;
   padding-top: 100px;
-  color: grey
+  color: rgb(127, 179, 127);
+  font-size: 0.8rem;
 }
 
 .gameHeader {
   margin: 0 auto;
   width: 90vw;
-  height: 100px;
+  height: 60px;
   color: white;
   display: flex;
   justify-content: space-between;
