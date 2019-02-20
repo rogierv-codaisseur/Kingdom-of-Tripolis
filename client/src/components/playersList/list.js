@@ -5,21 +5,16 @@ const PlayersList = props => {
   const { players } = props;
   return (
     <div className="heroesList">
-      <h1>Heroes</h1>
-      <ul>
-        {!players && 'Loading...'}
-        {players &&
-          players.map(player => (
-            <li key={player.name}>
-              <i>
-                Player
-                {player.id}
-              </i>
-              <br />
-              {player.name}
-            </li>
-          ))}
-      </ul>
+      <h1>Codastroids</h1>
+
+      {!players && 'Loading...'}
+      {players &&
+        players.slice(0, 2).map((player, index) => (
+          <ul key={player.id}>
+            <li className="playersId">{`Player ${index + 1}`}</li>
+            <li>{player.name}</li>
+          </ul>
+        ))}
     </div>
   );
 };
