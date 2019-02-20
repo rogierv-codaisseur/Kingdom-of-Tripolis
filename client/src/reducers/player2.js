@@ -1,11 +1,12 @@
-import { MOVE_PLAYER2, RECEIVE_MOVE2, PLAYER_TURN } from '../constants/actionTypes';
+import { MOVE_PLAYER2, RECEIVE_MOVE2, PLAYER_TURN, PLAYER2_WON, PLAYER2_LOST } from '../constants/actionTypes';
 
 const initialState = {
   position: [0, 0],
   spriteLocation: '0px 0px',
   direction: 'Right',
   walkIndex: 0,
-  playerTurn: false
+  playerTurn: true,
+  result: 'In Progress'
 };
 
 const player2 = (state = initialState, action) => {
@@ -19,7 +20,8 @@ const player2 = (state = initialState, action) => {
     case MOVE_PLAYER2:
       return {
         ...action.payload,
-        playerTurn: state.playerTurn
+        playerTurn: state.playerTurn,
+        result: state.result
       };
     case RECEIVE_MOVE2:
       return {
@@ -27,9 +29,19 @@ const player2 = (state = initialState, action) => {
         direction: action.action,
         walkIndex,
         spriteLocation,
-        playerTurn: state.playerTurn
+        playerTurn: state.playerTurn,
+        result: state.result
       };
-
+    case PLAYER2_WON:
+      return {
+        ...state,
+        result: 'Won'
+      };
+    case PLAYER2_LOST:
+      return {
+        ...state,
+        result: 'Lost'
+      };
     default:
       return state;
   }

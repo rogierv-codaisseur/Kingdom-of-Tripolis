@@ -14,3 +14,7 @@ export const MOVE_ENEMY2 = 'MOVE_ENEMY2';
 export const MOVE_PLAYER2 = 'MOVE_PLAYER2';
 export const PLAYERS_LIST = 'PLAYERS_LIST';
 export const PLAYER_TURN = 'PLAYER_TURN';
+export const PLAYER_LOST = 'PLAYER_LOST';
+export const PLAYER_WON = 'PLAYER_WON';
+export const PLAYER2_LOST = 'PLAYER2_LOST';
+export const PLAYER2_WON = 'PLAYER2_WON';

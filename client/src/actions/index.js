@@ -8,7 +8,7 @@ import {
 
 let nextMoveId = 0;
 
-export const receiveMove = (action, player, position, walkIndex, spriteLocation, playerTurn) => ({
+export const receiveMove = (action, player, position, walkIndex, spriteLocation, playerTurn, result) => ({
   type: RECEIVE_MOVE,
   id: nextMoveId++,
   action,
@@ -16,10 +16,11 @@ export const receiveMove = (action, player, position, walkIndex, spriteLocation,
   position,
   walkIndex,
   spriteLocation,
-  playerTurn
+  playerTurn,
+  result
 });
 
-export const receiveMove2 = (action, player, position, walkIndex, spriteLocation, playerTurn) => ({
+export const receiveMove2 = (action, player, position, walkIndex, spriteLocation, playerTurn, result) => ({
   type: RECEIVE_MOVE2,
   id: nextMoveId++,
   action,
@@ -27,7 +28,8 @@ export const receiveMove2 = (action, player, position, walkIndex, spriteLocation
   position,
   walkIndex,
   spriteLocation,
-  playerTurn
+  playerTurn,
+  result
 });
 
 export const receiveMoveEnemy = (action, player, position, walkIndex, spriteLocation) => ({

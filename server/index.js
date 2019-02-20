@@ -45,6 +45,7 @@ wss.on('connection', ws => {
         break;
       }
       case 'SEND_MOVE':
+        console.log(data);
         broadcast(
           {
             type: 'SEND_MOVE',
@@ -53,7 +54,8 @@ wss.on('connection', ws => {
             position: data.position,
             walkIndex: data.walkIndex,
             spriteLocation: data.spriteLocation,
-            playerTurn: data.playerTurn
+            playerTurn: data.playerTurn,
+            result: data.result
           },
           ws
         );
@@ -67,7 +69,8 @@ wss.on('connection', ws => {
             position: data.position,
             walkIndex: data.walkIndex,
             spriteLocation: data.spriteLocation,
-            playerTurn: data.playerTurn
+            playerTurn: data.playerTurn,
+            result: data.result
           },
           ws
         );
