@@ -45,7 +45,6 @@ wss.on('connection', ws => {
         break;
       }
       case 'SEND_MOVE':
-        console.log(data);
         broadcast(
           {
             type: 'SEND_MOVE',
@@ -100,6 +99,26 @@ wss.on('connection', ws => {
           },
           ws
         );
+        break;
+      case 'SEND_PLAYER_WON':
+        broadcast({
+          type: 'PLAYER_WON'
+        });
+        break;
+      case 'SEND_PLAYER_LOST':
+        broadcast({
+          type: 'PLAYER_LOST'
+        });
+        break;
+      case 'SEND_PLAYER2_WON':
+        broadcast({
+          type: 'PLAYER2_WON'
+        });
+        break;
+      case 'SEND_PLAYER2_LOST':
+        broadcast({
+          type: 'PLAYER2_LOST'
+        });
         break;
       default:
         break;
