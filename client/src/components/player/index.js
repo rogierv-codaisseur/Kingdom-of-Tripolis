@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import walkSprite from './player_walk.png';
 import handleMovement from './movement';
 
@@ -23,9 +22,10 @@ const Player = props => {
         }}
       >
         Player 1 won!
-        <button type="button">
-          <Link to="/">Go back to the Homescreen</Link>
-        </button>
+        <br />
+        <a href="/">Go back to the Homescreen</a>
+        <br />
+        <a href="/1">Replay this game</a>
       </div>
     );
   }
