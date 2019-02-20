@@ -5,6 +5,7 @@ import Player from '../player/index';
 import Enemy from '../enemy/index';
 import Enemy2 from '../enemy2/index';
 import Player2 from '../player2/index';
+import PlayersList from '../playersList/listContainer'
 import Loot from '../loot/index';
 import level1 from '../../data/maps/1';
 import level2 from '../../data/maps/2';
@@ -35,6 +36,10 @@ const World = ({ match }) => {
   }
 
   return (
+   <div className="playScreen">
+   <div>
+      <PlayersList />
+    </div>
     <div
       style={{
         position: 'relative'
@@ -46,6 +51,7 @@ const World = ({ match }) => {
       <Enemy />
       <Enemy2 />
       <Loot />
+    </div>
     </div>
   );
 };

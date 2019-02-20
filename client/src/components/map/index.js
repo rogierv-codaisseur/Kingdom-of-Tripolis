@@ -9,6 +9,8 @@ const getTileSprite = type => {
   switch (type) {
     case 0:
       return 'grass';
+    case 1:
+      return 'portal';
     case 3:
       return 'tree';
     case 4:

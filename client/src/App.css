@@ -56,3 +56,69 @@ h1 {
 .playersId {
   color: lightgreen;
 }
+
+.HomeScreen {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  width: 1200px;
+  height: 600px;
+  color: white;
+  margin: 0 auto;
+  border: 1 solid white;
+  background-clip: green
+}
+
+.HomeScreen li {
+  list-style-type: none;
+  padding-top: 10px;
+}
+
+.homeId {
+  color: lightgreen;
+}
+
+.homeName {
+  color: white;
+}
+
+.homeStartText {
+  height: 300px;
+  justify-items: center;
+  margin: auto auto;
+  text-align: center;
+  color: grey;
+  font-size: 3rem;
+}
+
+.homeList {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.homePlayers {
+  display: flex;
+  flex-direction: row;
+}
+
+.gameTitle {
+  font-size: 5rem;
+  text-align: center;
+}
+
+.homeButton {
+  width: 200px;
+  height: 100px;
+  background-color: dimgray;
+  color: white;
+}
+
+.homeButtonDiv {
+  margin: 0 auto;
+  padding-top: 50px;
+}
+
+.information {
+  text-align: center;
+}
