@@ -55,8 +55,8 @@ export default function handleMovement(player) {
   }
 
   function observeImpassable(oldPos, newPos) {
-    const enemyPos = store.getState().enemy.position;
-    const enemy2Pos = store.getState().enemy2.position;
+    // const enemyPos = store.getState().enemy.position;
+    // const enemy2Pos = store.getState().enemy2.position;
     const tiles = store.getState().map.tiles;
     const y = newPos[1] / SPRITE_SIZE;
     const x = newPos[0] / SPRITE_SIZE;
