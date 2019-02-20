@@ -144,7 +144,8 @@ export default function handleMovement(player) {
             spriteLocation: getSpriteLocation(direction, walkIndex),
             playerTurn,
             result
-          }
+          },
+          meta: { sound: { play: 'intro' }}
         });
         store.dispatch({
           type: SEND_MOVE,

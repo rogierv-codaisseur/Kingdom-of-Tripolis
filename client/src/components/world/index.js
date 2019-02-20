@@ -13,6 +13,7 @@ import level2 from '../../data/maps/2';
 import store from '../../store';
 import { ADD_TILES } from '../../constants/actionTypes';
 
+
 const World = ({ match }) => {
   const level = match.params.id;
   switch (level) {
