@@ -1,25 +1,35 @@
-import { RECEIVE_MOVE, RECEIVE_MOVE2, RECEIVE_MOVE_ENEMY, RECEIVE_MOVE_ENEMY2, PLAYERS_LIST } from '../constants/actionTypes';
+import {
+  RECEIVE_MOVE,
+  RECEIVE_MOVE2,
+  RECEIVE_MOVE_ENEMY,
+  RECEIVE_MOVE_ENEMY2,
+  PLAYERS_LIST
+} from '../constants/actionTypes';
 
 let nextMoveId = 0;
 
-export const receiveMove = (action, player, position, walkIndex, spriteLocation) => ({
+export const receiveMove = (action, player, position, walkIndex, spriteLocation, playerTurn, result) => ({
   type: RECEIVE_MOVE,
   id: nextMoveId++,
   action,
   player,
   position,
   walkIndex,
-  spriteLocation
+  spriteLocation,
+  playerTurn,
+  result
 });
 
-export const receiveMove2 = (action, player, position, walkIndex, spriteLocation) => ({
+export const receiveMove2 = (action, player, position, walkIndex, spriteLocation, playerTurn, result) => ({
   type: RECEIVE_MOVE2,
   id: nextMoveId++,
   action,
   player,
   position,
   walkIndex,
-  spriteLocation
+  spriteLocation,
+  playerTurn,
+  result
 });
 
 export const receiveMoveEnemy = (action, player, position, walkIndex, spriteLocation) => ({
