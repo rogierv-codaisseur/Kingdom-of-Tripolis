@@ -161,12 +161,8 @@ export default function handleMovement(player2) {
         store.dispatch({ type: PLAYER2_LOST });
         store.dispatch({ type: PLAYER_WON });
       }
-      const resultPlayer = store.getState().player.result;
-      if (resultPlayer === 'Won') {
-        alert('Other player won');
-      }
-      if (resultPlayer === 'Lost') {
-        alert('You won');
+      if (store.getState().player.result === 'Won' || store.getState().player.result === 'Lost') {
+        return false;
       }
       dispatchMove(direction, newPos);
     }

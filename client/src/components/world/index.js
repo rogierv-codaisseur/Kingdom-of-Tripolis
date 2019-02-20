@@ -41,11 +41,11 @@ const World = ({ match }) => {
       }}
     >
       <Map />
-      <Player />
-      <Player2 />
+      <Loot />
       <Enemy />
       <Enemy2 />
-      <Loot />
+      <Player />
+      <Player2 />
     </div>
   );
 };
