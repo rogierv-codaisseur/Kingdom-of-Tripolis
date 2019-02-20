@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import Map from '../map';
 import Player from '../player/index';
 import Enemy from '../enemy/index';
 import Enemy2 from '../enemy2/index';
 import Player2 from '../player2/index';
-import PlayersList from '../playersList/listContainer'
+import PlayersList from '../playersList/listContainer';
 import Loot from '../loot/index';
 import level1 from '../../data/maps/1';
 import level2 from '../../data/maps/2';
 import store from '../../store';
 import { ADD_TILES } from '../../constants/actionTypes';
-import { Link } from 'react-router-dom'
 
 const World = ({ match }) => {
   const level = match.params.id;
@@ -38,27 +38,29 @@ const World = ({ match }) => {
 
   return (
     <div>
-    <header className="gameHeader">
-     <h2>The Kingdom of Tripolis</h2>
-     <h2><Link to = '/'>Home</Link></h2>
-   </header>
-   <div className="playScreen">
-   <div>
-      <PlayersList />
-    </div>
-    <div
-      style={{
-        position: 'relative'
-      }}
-    >
-      <Map />
-      <Loot />
-      <Enemy />
-      <Enemy2 />
-      <Player />
-      <Player2 />
-    </div>
-    </div>
+      <header className="gameHeader">
+        <h2>The Kingdom of Tripolis</h2>
+        <h2>
+          <Link to="/">Home</Link>
+        </h2>
+      </header>
+      <div className="playScreen">
+        <div>
+          <PlayersList />
+        </div>
+        <div
+          style={{
+            position: 'relative'
+          }}
+        >
+          <Map />
+          <Loot />
+          <Enemy />
+          <Enemy2 />
+          <Player />
+          <Player2 />
+        </div>
+      </div>
     </div>
   );
 };

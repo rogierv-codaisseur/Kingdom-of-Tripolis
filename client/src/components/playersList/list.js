@@ -15,12 +15,17 @@ const PlayersList = props => {
             <li>{player.name}</li>
           </ul>
         ))}
-        <div className="information2">
-        GAME RULES:<br />
-        Player 1 - Use arrow keys<br />
-        Player 2 - Use W A S D<br />
-        Navigate around the map<br />
-        Avoid the Guards<br />
+      <div className="information2">
+        GAME RULES:
+        <br />
+        Player 1 - Use arrow keys
+        <br />
+        Player 2 - Use W A S D
+        <br />
+        Navigate around the map
+        <br />
+        Avoid the Guards
+        <br />
         Claim your LOOT!
       </div>
     </div>
