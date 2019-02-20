@@ -1,53 +1,14 @@
 import store from '../../store';
-import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT } from '../../constants/gameConstants';
+import { SPRITE_SIZE } from '../../constants/gameConstants';
 import { MOVE_ENEMY, SEND_MOVE_ENEMY } from '../../constants/actionTypes';
+import {
+  getNewPositionEnemy,
+  getSpriteLocationEnemy,
+  getWalkIndex,
+  observeBoundaries
+} from '../../helpers/handleMovement';
 
 export default function handleEnemyMovement(enemy) {
-  function getNewPosition(oldPos, direction) {
-    switch (direction) {
-      //switch left and right for enemy
-      case 'Right':
-        return [oldPos[0] - SPRITE_SIZE, oldPos[1]];
-      case 'Left':
-        return [oldPos[0] + SPRITE_SIZE, oldPos[1]];
-      case 'Up':
-        return [oldPos[0], oldPos[1] - SPRITE_SIZE];
-      case 'Down':
-        return [oldPos[0], oldPos[1] + SPRITE_SIZE];
-      default:
-        return oldPos;
-    }
-  }
-
-  function getSpriteLocation(direction, walkIndex) {
-    switch (direction) {
-      case 'Up':
-        return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 0}px`;
-      case 'Left':
-        return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 1}px`;
-      case 'Down':
-        return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 2}px`;
-      case 'Right':
-        return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 3}px`;
-      default:
-        return `0px 0px`;
-    }
-  }
-
-  function getWalkIndex() {
-    const walkIndex = store.getState().enemy.walkIndex;
-    return walkIndex >= 7 ? 0 : walkIndex + 1;
-  }
-
-  function observeBoundaries(oldPos, newPos) {
-    return (
-      newPos[0] >= 0 &&
-      newPos[0] <= MAP_WIDTH - SPRITE_SIZE &&
-      (newPos[1] >= 0 && newPos[1] <= MAP_HEIGHT - SPRITE_SIZE)
-    );
-    // returns true or false
-  }
-
   function observeImpassable(oldPos, newPos) {
     const playerPos = store.getState().player.position;
     const playerPos2 = store.getState().player2.position;
@@ -78,7 +39,7 @@ export default function handleEnemyMovement(enemy) {
         position: newPos,
         direction,
         walkIndex,
-        spriteLocation: getSpriteLocation(direction, walkIndex)
+        spriteLocation: getSpriteLocationEnemy(direction, walkIndex)
       }
     });
     store.dispatch({
@@ -86,13 +47,13 @@ export default function handleEnemyMovement(enemy) {
       action: direction,
       position: newPos,
       walkIndex,
-      spriteLocation: getSpriteLocation(direction, walkIndex)
+      spriteLocation: getSpriteLocationEnemy(direction, walkIndex)
     });
   }
 
   function attemptMove(direction) {
     const oldPos = store.getState().enemy.position;
-    const newPos = getNewPosition(oldPos, direction);
+    const newPos = getNewPositionEnemy(oldPos, direction);
     const lootPos = store.getState().loot.position;
 
     if (lootPos[0] === newPos[0] && lootPos[1] === newPos[1]) {
