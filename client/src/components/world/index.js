@@ -11,6 +11,7 @@ import level1 from '../../data/maps/1';
 import level2 from '../../data/maps/2';
 import store from '../../store';
 import { ADD_TILES } from '../../constants/actionTypes';
+import { Link } from 'react-router-dom'
 
 const World = ({ match }) => {
   const level = match.params.id;
@@ -36,6 +37,11 @@ const World = ({ match }) => {
   }
 
   return (
+    <div>
+    <header className="gameHeader">
+     <h2>The Kingdom of Tripolis</h2>
+     <h2><Link to = '/'>Home</Link></h2>
+   </header>
    <div className="playScreen">
    <div>
       <PlayersList />
@@ -51,6 +57,7 @@ const World = ({ match }) => {
       <Enemy />
       <Enemy2 />
       <Loot />
+    </div>
     </div>
     </div>
   );

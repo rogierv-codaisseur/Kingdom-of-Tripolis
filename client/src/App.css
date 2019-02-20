@@ -122,3 +122,18 @@ h1 {
 .information {
   text-align: center;
 }
+
+.information2 {
+  text-align: center;
+  padding-top: 100px;
+  color: grey
+}
+
+.gameHeader {
+  margin: 0 auto;
+  width: 90vw;
+  height: 100px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
