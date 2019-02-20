@@ -1,108 +1,34 @@
+import { isEqual } from 'lodash';
 import store from '../../store';
-import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT } from '../../constants/gameConstants';
+import { move, sendMove } from '../../actions';
+import {
+  getNewPosition,
+  getSpriteLocation,
+  getWalkIndex,
+  observeBoundaries,
+  observeImpassable
+} from '../../helpers/handleMovement';
 import { MOVE_ENEMY, SEND_MOVE_ENEMY } from '../../constants/actionTypes';
 
-export default function handleEnemyMovement(enemy) {
-  function getNewPosition(oldPos, direction) {
-    switch (direction) {
-      //switch left and right for enemy
-      case 'Right':
-        return [oldPos[0] - SPRITE_SIZE, oldPos[1]];
-      case 'Left':
-        return [oldPos[0] + SPRITE_SIZE, oldPos[1]];
-      case 'Up':
-        return [oldPos[0], oldPos[1] - SPRITE_SIZE];
-      case 'Down':
-        return [oldPos[0], oldPos[1] + SPRITE_SIZE];
-      default:
-        return oldPos;
-    }
-  }
+const dispatchMove = (direction, newPos) => {
+  const walkIndex = getWalkIndex();
+  const spriteLocation = getSpriteLocation(direction, walkIndex, 1);
+  store.dispatch(move(MOVE_ENEMY, newPos, direction, walkIndex, spriteLocation));
+  store.dispatch(sendMove(SEND_MOVE_ENEMY, newPos, direction, walkIndex, spriteLocation));
+};
 
-  function getSpriteLocation(direction, walkIndex) {
-    switch (direction) {
-      case 'Up':
-        return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 0}px`;
-      case 'Left':
-        return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 1}px`;
-      case 'Down':
-        return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 2}px`;
-      case 'Right':
-        return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 3}px`;
-      default:
-        return `0px 0px`;
-    }
-  }
+const handleEnemyMovement = enemy => {
+  const attemptMove = direction => {
+    const { enemy, loot } = store.getState();
+    const newPos = getNewPosition(enemy.position, direction, 1);
 
-  function getWalkIndex() {
-    const walkIndex = store.getState().enemy.walkIndex;
-    return walkIndex >= 7 ? 0 : walkIndex + 1;
-  }
+    if (isEqual(loot.position, newPos)) alert('The Guards have reclaimed the LOOT!');
 
-  function observeBoundaries(oldPos, newPos) {
-    return (
-      newPos[0] >= 0 &&
-      newPos[0] <= MAP_WIDTH - SPRITE_SIZE &&
-      (newPos[1] >= 0 && newPos[1] <= MAP_HEIGHT - SPRITE_SIZE)
-    );
-    // returns true or false
-  }
+    if (observeBoundaries(enemy.position, newPos) && observeImpassable(enemy.position, newPos, true))
+      dispatchMove(direction, newPos);
+  };
 
-  function observeImpassable(oldPos, newPos) {
-    const playerPos = store.getState().player.position;
-    const playerPos2 = store.getState().player2.position;
-    const enemy2Pos = store.getState().enemy2.position;
-    const tiles = store.getState().map.tiles;
-    const y = newPos[1] / SPRITE_SIZE;
-    const x = newPos[0] / SPRITE_SIZE;
-    const nextTile = tiles[y][x];
-
-    if (playerPos[0] === newPos[0] && playerPos[1] === newPos[1]) {
-      return false;
-    }
-    if (playerPos2[0] === newPos[0] && playerPos2[1] === newPos[1]) {
-      return false;
-    }
-    if (enemy2Pos[0] === newPos[0] && enemy2Pos[1] === newPos[1]) {
-      return false;
-    }
-
-    return nextTile < 5;
-  }
-
-  function dispatchMove(direction, newPos) {
-    const walkIndex = getWalkIndex();
-    store.dispatch({
-      type: MOVE_ENEMY,
-      payload: {
-        position: newPos,
-        direction,
-        walkIndex,
-        spriteLocation: getSpriteLocation(direction, walkIndex)
-      }
-    });
-    store.dispatch({
-      type: SEND_MOVE_ENEMY,
-      action: direction,
-      position: newPos,
-      walkIndex,
-      spriteLocation: getSpriteLocation(direction, walkIndex)
-    });
-  }
-
-  function attemptMove(direction) {
-    const oldPos = store.getState().enemy.position;
-    const newPos = getNewPosition(oldPos, direction);
-    const lootPos = store.getState().loot.position;
-
-    if (lootPos[0] === newPos[0] && lootPos[1] === newPos[1]) {
-      alert('The Guards have reclaimed the LOOT!');
-    }
-
-    if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos)) dispatchMove(direction, newPos);
-  }
-
-  function handleKeyDown(e) {
+  const handleKeyDown = e => {
     e.preventDefault();
 
     switch (e.keyCode) {
@@ -125,10 +51,12 @@ export default function handleEnemyMovement(enemy) {
       default:
         break;
     }
-  }
+  };
   window.addEventListener('keydown', e => {
     handleKeyDown(e);
   });
 
   return enemy;
-}
+};
+
+export default handleEnemyMovement;
