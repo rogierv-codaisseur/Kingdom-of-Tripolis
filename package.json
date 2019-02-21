@@ -17,5 +17,6 @@
   "bugs": {
     "url": "https://github.com/rogierv-codaisseur/Codastroids/issues"
   },
-  "homepage": "https://github.com/rogierv-codaisseur/Codastroids#readme"
+  "homepage": "https://github.com/rogierv-codaisseur/Codastroids#readme",
+  "dependencies": {}
 }
