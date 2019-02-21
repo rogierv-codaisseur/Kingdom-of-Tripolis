@@ -15,7 +15,9 @@ import {
 const setupSocket = (dispatch, player) => {
   const PORT = process.env.PORT || 4000;
   const HOST = window.location.hostname;
-  const socket = new WebSocket(`ws://${HOST}:${PORT}`);
+  const serverAdress =
+    process.env.NODE_ENV === 'production' ? 'wss://codastroids.herokuapp.com' : `ws://${HOST}:${PORT}`;
+  const socket = new WebSocket(serverAdress);
 
   socket.onopen = () => {
     socket.send(
