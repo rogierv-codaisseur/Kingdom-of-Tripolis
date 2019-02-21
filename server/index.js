@@ -1,8 +1,14 @@
 const WebSocket = require('ws');
+const express = require('express');
+const http = require('http');
 
 const port = process.env.PORT || 4000;
-
-const wss = new WebSocket.Server({ port });
+const app = express();
+const httpServer = http.createServer(app);
+const wss = new WebSocket.Server({
+  server: httpServer
+});
+httpServer.listen(port);
 
 const players = [];
 
