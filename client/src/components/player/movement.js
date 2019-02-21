@@ -45,9 +45,15 @@ const handleMovement = player => {
       }
       if (isEqual(loot.position, newPos))
         [PLAYER_WON, PLAYER2_LOST, SEND_PLAYER_WON, SEND_PLAYER2_LOST].map(type => store.dispatch({ type }));
-      
+
       if (isEqual(loot.position, player2.position))
         [PLAYER2_WON, PLAYER_LOST, SEND_PLAYER2_WON, SEND_PLAYER_LOST].map(type => store.dispatch({ type }));
+
+      if (isEqual(loot.position, enemy.position))
+        [PLAYER2_LOST, PLAYER_LOST, SEND_PLAYER2_LOST, SEND_PLAYER_LOST].map(type => store.dispatch({ type }));
+
+      if (isEqual(loot.position, enemy2.position))
+        [PLAYER2_LOST, PLAYER_LOST, SEND_PLAYER2_LOST, SEND_PLAYER_LOST].map(type => store.dispatch({ type }));
 
       if (store.getState().player2.result === 'Won' || store.getState().player2.result === 'Lost') return false;
       dispatchMove(direction, newPos);

@@ -3,31 +3,17 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import walkSprite from './player2_walk.png';
 import handleMovement from './movement';
+import LootMessage from '../messages/LootMessage';
 
 const Player2 = props => {
   const { position, spriteLocation, result } = props;
 
   if (result === 'Won') {
-    return (
-      <div
-        style={{
-          backgroundColor: 'yellow',
-          position: 'absolute',
-          top: '0',
-          left: '0',
-          width: '810px',
-          height: '490px',
-          zIndex: 9,
-          fontSize: '3rem'
-        }}
-      >
-        Player 2 won!
-        <br />
-        <a href="/">Go back to the Homescreen</a>
-        <br />
-        <a href="/1">Replay this game</a>
-      </div>
-    );
+    return <LootMessage player={2} />;
+  }
+
+  if (result === 'Lost') {
+    return <LootMessage enemy={true} />;
   }
 
   return (
