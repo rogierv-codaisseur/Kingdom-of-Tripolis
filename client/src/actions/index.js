@@ -8,6 +8,7 @@ import {
 
 let nextMoveId = 0;
 
+//cc:socket#7;The move is received
 export const receiveMove = (action, player, position, walkIndex, spriteLocation, playerTurn, result) => ({
   type: RECEIVE_MOVE,
   id: nextMoveId++,
@@ -68,6 +69,7 @@ export const move = (typeAction, newPos, direction, walkIndex, spriteLocation, r
   }
 });
 
+//cc:socket#3;Dispatch move
 export const sendMove = (typeAction, newPos, direction, walkIndex, spriteLocation, result) => ({
   type: typeAction,
   action: direction,
