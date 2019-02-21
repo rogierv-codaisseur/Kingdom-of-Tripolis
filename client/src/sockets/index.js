@@ -13,10 +13,14 @@ import {
 } from '../constants/actionTypes';
 
 const setupSocket = (dispatch, player) => {
-  const PORT = process.env.PORT || 4000;
-  const HOST = window.location.hostname;
+  // Turn on for local server
+  // const serverAdress =
+  //   process.env.NODE_ENV === 'production' ? 'wss://codastroids.herokuapp.com' : `ws://localhost:4000`;
+
+  // Turn on for Heroku server
   const serverAdress =
-    process.env.NODE_ENV === 'production' ? 'wss://codastroids.herokuapp.com' : `ws://${HOST}:${PORT}`;
+    process.env.NODE_ENV === 'production' ? 'wss://codastroids.herokuapp.com' : 'wss://codastroids.herokuapp.com';
+
   const socket = new WebSocket(serverAdress);
 
   socket.onopen = () => {
