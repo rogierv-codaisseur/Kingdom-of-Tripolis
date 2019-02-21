@@ -145,7 +145,6 @@ export default function handleMovement(player) {
             playerTurn,
             result
           },
-          meta: { sound: { play: 'intro' }}
         });
         store.dispatch({
           type: SEND_MOVE,
