@@ -8,6 +8,7 @@ import {
 
 let nextMoveId = 0;
 
+//cc:socket#7;The move is received
 export const receiveMove = (action, player, position, walkIndex, spriteLocation, playerTurn, result) => ({
   type: RECEIVE_MOVE,
   id: nextMoveId++,
@@ -55,4 +56,25 @@ export const receiveMoveEnemy2 = (action, player, position, walkIndex, spriteLoc
 export const populatePlayersList = players => ({
   type: PLAYERS_LIST,
   players
+});
+
+export const move = (typeAction, newPos, direction, walkIndex, spriteLocation, result) => ({
+  type: typeAction,
+  payload: {
+    position: newPos,
+    direction,
+    walkIndex,
+    spriteLocation,
+    result
+  }
+});
+
+//cc:socket#3;Dispatch move
+export const sendMove = (typeAction, newPos, direction, walkIndex, spriteLocation, result) => ({
+  type: typeAction,
+  action: direction,
+  position: newPos,
+  walkIndex,
+  spriteLocation,
+  result
 });

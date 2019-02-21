@@ -21,18 +21,14 @@ const soundsData = {
 
 const loadedSoundsMiddleware = soundsMiddleware(soundsData);
 
-
-const devTools =
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 
 const sagaMiddleware = createSagaMiddleware();
 
 const enhancer = compose(
   applyMiddleware(sagaMiddleware, loadedSoundsMiddleware),
   devTools
-  // applyMiddleware(logger)
 );
-
 
 const store = createStore(reducer, enhancer);
 
