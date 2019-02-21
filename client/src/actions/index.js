@@ -66,7 +66,7 @@ export const move = (typeAction, newPos, direction, walkIndex, spriteLocation, r
     walkIndex,
     spriteLocation,
     result
-  }
+  },
 });
 
 //cc:socket#3;Dispatch move
