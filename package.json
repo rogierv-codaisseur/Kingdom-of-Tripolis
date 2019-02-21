@@ -18,5 +18,8 @@
     "url": "https://github.com/rogierv-codaisseur/Codastroids/issues"
   },
   "homepage": "https://github.com/rogierv-codaisseur/Codastroids#readme",
-  "dependencies": {}
+  "dependencies": {
+    "express": "^4.16.4",
+    "ws": "^6.1.4"
+  }
 }
