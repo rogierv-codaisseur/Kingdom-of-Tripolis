@@ -66,7 +66,8 @@ export const move = (typeAction, newPos, direction, walkIndex, spriteLocation, r
     walkIndex,
     spriteLocation,
     result
-  }
+  },
+  meta: { sound: { play: 'walk' }},
 });
 
 //cc:socket#3;Dispatch move

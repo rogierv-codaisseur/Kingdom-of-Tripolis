@@ -12,11 +12,11 @@ import reducer from './reducers';
 // });
 
 const soundsData = {
-  intro: './data/sounds/intro.mp3',
-  stage: './data/sounds/stage.mp3',
-  walk: './data/sounds/walk.mp3',
-  respawn: './data/sounds/respawn.mp3',
-  win: './data/sounds/win.mp3'
+  // intro: './data/sounds/intro.mp3',
+  // stage: './data/sounds/stage.mp3',
+  walk: './data/sounds/walk.wav',
+  respawn: './data/sounds/respawn.wav',
+  win: './data/sounds/win.wav'
 }
 
 const loadedSoundsMiddleware = soundsMiddleware(soundsData);
@@ -37,3 +37,5 @@ const socket = setupSocket(store.dispatch, username);
 sagaMiddleware.run(handleNewMessage, { socket, username });
 
 export default store;
+
+ 
