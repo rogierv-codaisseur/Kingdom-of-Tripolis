@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Intro from '../sounds/intro';
 
 const HomeScreen = props => {
@@ -26,6 +27,10 @@ const HomeScreen = props => {
       <Intro />
     </div>
   );
+};
+
+HomeScreen.propTypes = {
+  players: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired
 };
 
 export default HomeScreen;
