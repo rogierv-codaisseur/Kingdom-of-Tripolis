@@ -1,4 +1,3 @@
-import { isEqual } from 'lodash';
 import store from '../../store';
 import { move, sendMove } from '../../actions';
 import { MOVE_ENEMY2, SEND_MOVE_ENEMY2 } from '../../constants/actionTypes';
@@ -19,10 +18,8 @@ export const dispatchMove = (direction, newPos) => {
 
 const handleEnemyMovement = enemy2 => {
   const attemptMove = direction => {
-    const { enemy2, loot } = store.getState();
+    const { enemy2 } = store.getState();
     const newPos = getNewPosition(enemy2.position, direction, 2);
-
-    if (isEqual(loot.position, newPos)) alert('The Guards have reclaimed the LOOT!');
 
     if (observeBoundaries(enemy2.position, newPos) && observeImpassable(enemy2.position, newPos, true))
       dispatchMove(direction, newPos);
