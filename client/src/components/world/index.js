@@ -10,11 +10,10 @@ import PlayersList from '../playersList/listContainer';
 import Loot from '../loot/index';
 import level1 from '../../data/maps/1';
 import level2 from '../../data/maps/2';
-import StageMusic from '../sounds/stage'
-import Walk from '../sounds/walk'
+import StageMusic from '../sounds/stage';
+import Walk from '../sounds/walk';
 import store from '../../store';
 import { ADD_TILES } from '../../constants/actionTypes';
-
 
 const World = ({ match }) => {
   const level = match.params.id;
@@ -44,7 +43,7 @@ const World = ({ match }) => {
       <header className="gameHeader">
         <h2>The Kingdom of Tripolis</h2>
         <h2>
-          <Link to="/">Home</Link>
+          <a href="/">Home</a>
         </h2>
       </header>
 
@@ -69,7 +68,6 @@ const World = ({ match }) => {
           <Walk />
         </div>
       </div>
-      
     </div>
   );
 };
