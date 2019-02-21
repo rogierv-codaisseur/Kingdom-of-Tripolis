@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactHowler from 'react-howler'
-// import Button from '../button/button'
 
 class Music extends React.Component {
   constructor (props) {
