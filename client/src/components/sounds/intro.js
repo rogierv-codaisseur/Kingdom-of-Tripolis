@@ -6,7 +6,7 @@ class Intro extends React.Component {
     super(props)
 
     this.state = {
-      playing: true
+      playing: false
     }
     this.handlePlay = this.handlePlay.bind(this)
     this.handlePause = this.handlePause.bind(this)
