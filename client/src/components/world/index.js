@@ -64,9 +64,12 @@ const World = ({ match }) => {
           <Player />
           <Player2 />
         </div>
+        <div className="buttonsDiv">
+          <StageMusic />
+          <Walk />
+        </div>
       </div>
-      <StageMusic />
-      <Walk />
+      
     </div>
   );
 };

@@ -24,11 +24,13 @@ class Walk extends React.Component {
           src={['walk.wav']}
           playing={this.state.playing}
         />
-        <button 
-          // onClick={this.handlePlay}
+        <img 
+          className="controlButtons" 
+          src="feet.png" 
           onKeyDown={this.handlePlay} 
+          alt="Play"
           tabIndex="0"
-        >Switch on Footsteps</button>
+          />
       </div>
     )
   }
