@@ -11,6 +11,7 @@ import {
 } from '../constants/actionTypes';
 
 const handleNewMessage = function* handleNewMessage(params) {
+  //cc:socket#4;Action is send to the socket connection
   yield takeEvery(SEND_MOVE, action => {
     action.player = params.username;
     params.socket.send(JSON.stringify(action));

@@ -29,6 +29,7 @@ const setupSocket = (dispatch, player) => {
     const data = JSON.parse(event.data);
     const { action, player, players, position, spriteLocation, type, walkIndex, playerTurn, result } = data;
     switch (type) {
+      //cc:socket#5;Socket will listen to messages from the server
       case SEND_MOVE:
         dispatch(receiveMove(action, player, position, walkIndex, spriteLocation, playerTurn, result));
         break;

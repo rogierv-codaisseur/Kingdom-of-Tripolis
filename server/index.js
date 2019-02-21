@@ -44,6 +44,7 @@ wss.on('connection', ws => {
         );
         break;
       }
+      //cc:socket#5;Server listen to message SEND_MOVE and will broadcast the action
       case 'SEND_MOVE':
         broadcast(
           {
