@@ -14,7 +14,8 @@
     "react-scripts": "2.1.5",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
-    "redux-saga": "^1.0.1"
+    "redux-saga": "^1.0.1",
+    "redux-sounds": "^3.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
