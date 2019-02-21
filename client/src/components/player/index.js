@@ -12,10 +12,6 @@ const Player = props => {
     return <LootMessage player={1} />;
   }
 
-  if (result === 'Lost') {
-    return <LootMessage enemy={true} />;
-  }
-
   return (
     <div
       className="player"
