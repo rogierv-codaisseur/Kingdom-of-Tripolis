@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "chance": "^1.0.18",
+    "eslint": "^5.14.1",
     "lodash": "^4.17.11",
     "prop-types": "^15.7.2",
     "react": "^16.8.2",
@@ -32,9 +33,6 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "devDependencies": {
-    "eslint": "^5.14.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-plugin-react": "^7.12.4"
-  }
+  "devDependencies": {},
+  "proxy": "http://localhost:4000"
 }

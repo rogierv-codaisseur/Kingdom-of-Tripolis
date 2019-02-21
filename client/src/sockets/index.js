@@ -13,8 +13,9 @@ import {
 } from '../constants/actionTypes';
 
 const setupSocket = (dispatch, player) => {
-  const port = process.env.PORT || 4000;
-  const socket = new WebSocket(`ws://localhost:${port}`);
+  const PORT = process.env.PORT || 4000;
+  const HOST = window.location.hostname;
+  const socket = new WebSocket(`ws://${HOST}:${PORT}`);
 
   socket.onopen = () => {
     socket.send(
@@ -31,6 +32,7 @@ const setupSocket = (dispatch, player) => {
     switch (type) {
       //cc:socket#5;Socket will listen to messages from the server
       case SEND_MOVE:
+        //cc:socket#6;The move is dispatched
         dispatch(receiveMove(action, player, position, walkIndex, spriteLocation, playerTurn, result));
         break;
       case SEND_MOVE2:
