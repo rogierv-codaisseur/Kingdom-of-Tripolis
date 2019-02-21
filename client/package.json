@@ -35,5 +35,6 @@
     "eslint": "^5.14.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-react": "^7.12.4"
-  }
+  },
+  "proxy": "http://localhost:4000"
 }

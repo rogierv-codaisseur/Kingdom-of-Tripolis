@@ -1,0 +1,21 @@
+{
+  "name": "codastroids",
+  "version": "1.0.0",
+  "description": "Here we will describe the game.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rogierv-codaisseur/Codastroids.git"
+  },
+  "keywords": [],
+  "author": "Rogier Verkaik & Dusty Wood Saunders",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rogierv-codaisseur/Codastroids/issues"
+  },
+  "homepage": "https://github.com/rogierv-codaisseur/Codastroids#readme"
+}
