@@ -128,3 +128,58 @@ h1 {
   display: flex;
   justify-content: space-between;
 }
+
+.loot-message {
+  font-size: 3rem;
+  font-family: 'Nova Flat', cursive;
+  background-color: rgba(0, 80, 255, 0.7);
+  top: 0;
+  left: 0;
+  width: 810px;
+  height: 490px;
+  z-index: 9;
+  position: absolute;
+  text-align: center;
+}
+
+.loot-message-title {
+  color: lightgreen;
+  margin-top: 100px;
+}
+
+.loot-message-text {
+  font-size: 2rem;
+  text-decoration: none;
+}
+
+.loot-message-text a {
+  color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: white;
+}
+
+.buttonsDiv {
+  display: flex;
+  flex-direction: row;
+}
+
+.buttonsDiv img:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.buttonsDiv img:focus {
+  outline: none;
+}
+
+.controlButtons {
+  width: 40px;
+  height: 40px;
+  padding-left: 3px;
+}

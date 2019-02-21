@@ -21,6 +21,7 @@ import {
   observeImpassable
 } from '../../helpers/handleMovement';
 
+//cc:socket#2;Send Move is dispatched
 export const dispatchMove = (direction, newPos) => {
   const walkIndex = getWalkIndex();
   const result = store.getState().player.result;
@@ -53,6 +54,7 @@ const handleMovement = player => {
     }
   };
 
+  //cc:socket#1;Key press by player 1
   const handleKeyDown = e => {
     e.preventDefault();
     switch (e.keyCode) {

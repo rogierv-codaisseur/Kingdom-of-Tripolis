@@ -10,8 +10,11 @@ import PlayersList from '../playersList/listContainer';
 import Loot from '../loot/index';
 import level1 from '../../data/maps/1';
 import level2 from '../../data/maps/2';
+import StageMusic from '../sounds/stage'
+import Walk from '../sounds/walk'
 import store from '../../store';
 import { ADD_TILES } from '../../constants/actionTypes';
+
 
 const World = ({ match }) => {
   const level = match.params.id;
@@ -44,6 +47,7 @@ const World = ({ match }) => {
           <Link to="/">Home</Link>
         </h2>
       </header>
+
       <div className="playScreen">
         <div>
           <PlayersList />
@@ -60,7 +64,12 @@ const World = ({ match }) => {
           <Player />
           <Player2 />
         </div>
+        <div className="buttonsDiv">
+          <StageMusic />
+          <Walk />
+        </div>
       </div>
+      
     </div>
   );
 };
