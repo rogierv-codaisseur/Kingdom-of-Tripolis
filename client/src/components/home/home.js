@@ -24,6 +24,16 @@ const HomeScreen = props => {
       <div className="homeStartText">
         {players.length === 1 ? 'Waiting for more players!' : <Link to="/1">Start Game</Link>}
       </div>
+
+      <p className="home-levels">
+        Levels
+        <br />
+        <Link to="/1"> 1 |</Link>
+        <Link to="/2"> 2 |</Link>
+        <Link to="/3"> 3 |</Link>
+        <Link to="/4"> 4 |</Link>
+        <Link to="/5"> 5</Link>
+      </p>
       <Intro />
     </div>
   );
