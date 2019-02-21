@@ -10,6 +10,9 @@ import PlayersList from '../playersList/listContainer';
 import Loot from '../loot/index';
 import level1 from '../../data/maps/1';
 import level2 from '../../data/maps/2';
+import level3 from '../../data/maps/3';
+import level4 from '../../data/maps/4';
+import level5 from '../../data/maps/5';
 import StageMusic from '../sounds/stage';
 import Walk from '../sounds/walk';
 import store from '../../store';
@@ -34,6 +37,34 @@ const World = ({ match }) => {
         }
       });
       break;
+
+    case '3':
+      store.dispatch({
+        type: ADD_TILES,
+        payload: {
+          tiles: level3
+        }
+      });
+      break;
+
+    case '4':
+      store.dispatch({
+        type: ADD_TILES,
+        payload: {
+          tiles: level4
+        }
+      });
+      break;
+
+    case '5':
+      store.dispatch({
+        type: ADD_TILES,
+        payload: {
+          tiles: level5
+        }
+      });
+      break;
+
     default:
       break;
   }
