@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom'
-import Music from '../music/music'
+import Intro from '../sounds/intro'
 
 
 const HomeScreen = props => {
@@ -24,7 +24,7 @@ const HomeScreen = props => {
       <div className="homeStartText">
         {players.length === 1 ? "Waiting for more players!" : <Link to = '/1'>Start Game</Link>}
       </div>
-      <Music />
+      <Intro />
     </div>
   );
 };
