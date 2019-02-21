@@ -28,11 +28,11 @@ const HomeScreen = props => {
       <p className="home-levels">
         Levels
         <br />
-        <Link to="/1"> 1 |</Link>
-        <Link to="/2"> 2 |</Link>
-        <Link to="/3"> 3 |</Link>
-        <Link to="/4"> 4 |</Link>
-        <Link to="/5"> 5</Link>
+        <a href="/1"> 1 |</a>
+        <a href="/2"> 2 |</a>
+        <a href="/3"> 3 |</a>
+        <a href="/4"> 4 |</a>
+        <a href="/5"> 5</a>
       </p>
       <Intro />
     </div>
