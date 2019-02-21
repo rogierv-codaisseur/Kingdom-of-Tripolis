@@ -26,13 +26,13 @@ class StageMusic extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className="buttonsDiv">
         <ReactHowler
           src={['stage.mp3']}
           playing={this.state.playing}
         />
-        <button onClick={this.handlePlay}>Play</button>
-        <button onClick={this.handlePause}>Pause</button>
+        <img className="controlButtons" src="play.png" onClick={this.handlePlay} alt="Play"/>
+        <img className="controlButtons" src="pause.png" onClick={this.handlePause} alt="Pause"/>
       </div>
     )
   }
