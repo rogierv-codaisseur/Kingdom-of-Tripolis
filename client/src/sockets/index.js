@@ -13,9 +13,9 @@ import {
 } from '../constants/actionTypes';
 
 const setupSocket = (dispatch, player) => {
-  const port = process.env.PORT || 4000;
+  const PORT = process.env.PORT || 4000;
   const HOST = window.location.hostname;
-  const socket = new WebSocket(`ws://${HOST}:${port}` || `ws://localhost:${port}`);
+  const socket = new WebSocket(`ws://${HOST}:${PORT}`);
 
   socket.onopen = () => {
     socket.send(
