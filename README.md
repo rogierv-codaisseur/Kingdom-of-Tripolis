@@ -17,7 +17,11 @@ Player will respawn at start when hit by an enemy.<br />
 Plan your moves carefully OR run like a crazed bat out of hell.<br />
 Be the first to claim the LOOT!
 
-## Install
+## Play Online
+
+https://kingdom-of-tripolis.netlify.com/
+
+## Run Locally
 
 The `Server` is deployed to Heroku. <br />
 If all dynos are running, you only need to run the `Client`
