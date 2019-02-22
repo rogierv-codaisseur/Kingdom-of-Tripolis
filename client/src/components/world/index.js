@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import Map from '../map';
 import Player from '../player/index';
 import Enemy from '../enemy/index';
