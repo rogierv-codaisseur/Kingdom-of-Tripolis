@@ -24,7 +24,7 @@ const PlayersList = props => {
         <br />
         Navigate around the map
         <br />
-        Avoid the Guards
+        Avoid the Skeletons
         <br />
         Claim your LOOT!
       </div>
