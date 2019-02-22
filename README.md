@@ -1,10 +1,13 @@
 # Welcome to the Kingdom of Tripolis
 
+![ReactKonva Logo](https://cloud.githubusercontent.com/assets/1443320/12193428/3bda2fcc-b623-11e5-8319-b1ccfc95eaec.png)
+
+
 We built this game as a classic top-down rpg style puzzler. 
 The aim of the game is to reach the Loot Chest first, while avoiding the skeletons.
 
-The front-end was developed using only React and Redux. 
-The back-end was implimented using Websocket
+The front-end was developed using only `React` and `Redux`. 
+The back-end was implimented using `Websocket`
 
 ## Game Rules
 
@@ -16,19 +19,23 @@ Be the first to claim the LOOT!
 
 ## Install
 
-The Server is deployed to Heroku. 
-If all dynos are running, you only need to run the Client
+The `Server` is deployed to Heroku. 
+If all dynos are running, you only need to run the `Client`
 
+```sh
 cd client/
 npm install
 npm run start
+```
 
-If dynos have been stopped, you can run the Server locally:
-(Run Client as mentioned above)
+If dynos have been stopped, you can run the `Server` locally:
+** NOTE: Run `Client` as mentioned above **
 
+```sh
 cd server/
 npm install
 npm run start
+```
 
 ## Contributors
 
