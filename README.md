@@ -28,8 +28,8 @@ npm install
 npm run start
 ```
 
-If dynos have been stopped, you can run the `Server` locally:
-** NOTE: Run `Client` as mentioned above **
+If dynos have been stopped, you can run the `Server` locally:<br />
+*NOTE: Run `Client` as mentioned above*
 
 ```sh
 cd server/
