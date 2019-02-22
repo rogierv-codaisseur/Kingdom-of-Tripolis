@@ -1,6 +1,6 @@
 .tile {
   display: inline-flex;
-  background-color: rgb(66, 143, 88);
+  background-color: rgb(79, 170, 105);
   background-image: url('/tiles/base.png')
 
 }
