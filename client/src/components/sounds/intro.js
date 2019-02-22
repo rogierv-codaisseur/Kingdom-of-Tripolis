@@ -25,11 +25,10 @@ class Intro extends React.Component {
   }
 
   render() {
+    const { playing } = this.state;
     return (
       <div className="buttonsDiv">
-        <ReactHowler src={['intro.mp3']} playing={this.state.playing} />
-        {/* <button onClick={this.handlePlay}>Play</button>
-        <button onClick={this.handlePause}>Pause</button> */}
+        <ReactHowler src={['intro.mp3']} playing={playing} />
 
         <img className="controlButtons" src="play.png" onClick={this.handlePlay} alt="Play" />
         <img className="controlButtons" src="pause.png" onClick={this.handlePause} alt="Pause" />
