@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import Map from '../map';
 import Player from '../player/index';
 import Enemy from '../enemy/index';
@@ -10,11 +9,13 @@ import PlayersList from '../playersList/listContainer';
 import Loot from '../loot/index';
 import level1 from '../../data/maps/1';
 import level2 from '../../data/maps/2';
-import StageMusic from '../sounds/stage'
-import Walk from '../sounds/walk'
+import level3 from '../../data/maps/3';
+import level4 from '../../data/maps/4';
+import level5 from '../../data/maps/5';
+import StageMusic from '../sounds/stage';
+import Walk from '../sounds/walk';
 import store from '../../store';
 import { ADD_TILES } from '../../constants/actionTypes';
-
 
 const World = ({ match }) => {
   const level = match.params.id;
@@ -35,6 +36,34 @@ const World = ({ match }) => {
         }
       });
       break;
+
+    case '3':
+      store.dispatch({
+        type: ADD_TILES,
+        payload: {
+          tiles: level3
+        }
+      });
+      break;
+
+    case '4':
+      store.dispatch({
+        type: ADD_TILES,
+        payload: {
+          tiles: level4
+        }
+      });
+      break;
+
+    case '5':
+      store.dispatch({
+        type: ADD_TILES,
+        payload: {
+          tiles: level5
+        }
+      });
+      break;
+
     default:
       break;
   }
@@ -44,7 +73,7 @@ const World = ({ match }) => {
       <header className="gameHeader">
         <h2>The Kingdom of Tripolis</h2>
         <h2>
-          <Link to="/">Home</Link>
+          <a href="/">Home</a>
         </h2>
       </header>
 
@@ -69,7 +98,6 @@ const World = ({ match }) => {
           <Walk />
         </div>
       </div>
-      
     </div>
   );
 };

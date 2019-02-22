@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Intro from '../sounds/intro';
 
 const HomeScreen = props => {
@@ -23,9 +24,23 @@ const HomeScreen = props => {
       <div className="homeStartText">
         {players.length === 1 ? 'Waiting for more players!' : <Link to="/1">Start Game</Link>}
       </div>
+
+      <p className="home-levels">
+        Levels
+        <br />
+        <a href="/1"> 1 |</a>
+        <a href="/2"> 2 |</a>
+        <a href="/3"> 3 |</a>
+        <a href="/4"> 4 |</a>
+        <a href="/5"> 5</a>
+      </p>
       <Intro />
     </div>
   );
+};
+
+HomeScreen.propTypes = {
+  players: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired
 };
 
 export default HomeScreen;
