@@ -1,6 +1,6 @@
 # Welcome to the Kingdom of Tripolis
 
-![ReactKonva Logo](https://cloud.githubusercontent.com/assets/1443320/12193428/3bda2fcc-b623-11e5-8319-b1ccfc95eaec.png)
+![Logo](https://github.com/rogierv-codaisseur/Codastroids/blob/features/readme/screenshots/logo.png)
 
 
 We built this game as a classic top-down rpg style puzzler. 
