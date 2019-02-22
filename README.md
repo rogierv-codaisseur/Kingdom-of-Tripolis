@@ -1,6 +1,6 @@
 ### Welcome to
 
-![Logo](https://github.com/rogierv-codaisseur/Codastroids/blob/features/readme/screenshots/logo.png)
+![Logo](https://github.com/rogierv-codaisseur/Kingdom-of-Tripolis/blob/features/readme/screenshots/logo.png)
 
 We built this game as a classic top-down rpg style puzzler.<br />
 The aim of the game is to reach the Loot Chest first, while avoiding the skeletons.
