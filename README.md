@@ -5,7 +5,7 @@
 We built this game as a classic top-down rpg style puzzler.<br />
 The aim of the game is to reach the Loot Chest first, while avoiding the skeletons.
 
-
+![](KingdomOfTripolis.gif)
 
 The front-end was developed using only `React` and `Redux`.<br />
 The back-end was implimented using `Websocket`
@@ -46,7 +46,6 @@ npm run start
 ## Contributors
 
 Rogier Verkaik: https://github.com/rogierv-codaisseur<br />
-
 Dusty Wood Saunders: https://github.com/dustywsaunders
 
 ## Credits
